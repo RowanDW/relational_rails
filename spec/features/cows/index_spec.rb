@@ -22,8 +22,8 @@ RSpec.describe '#the cows index page' do
     expect(page).to have_content("Age: 4")
     expect(page).to have_content("Age: 3")
 
-    expect(page).to have_content("Grass fed: true")
-    expect(page).to have_content("Grass fed: false")
+    expect(page).to have_content("Grass fed?: true")
+    expect(page).to have_content("Grass fed?: false")
 
     expect(page).to have_content("Ranch id: #{ranch_1.id}")
     expect(page).to have_content("Ranch id: #{ranch_2.id}")
