@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   get '/ranches', to: 'ranches#index'
   get '/ranches/:id', to: 'ranches#show'
+
+  get '/cows', to: 'cows#index'
 end
