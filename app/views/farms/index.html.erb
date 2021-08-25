@@ -1,1 +1,5 @@
 <h1> Welcome to Farms </h1>
+
+<% @farms.each do |farm| %>
+  <p><%= farm.name %></p>
+<% end %>
