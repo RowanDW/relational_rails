@@ -35,7 +35,7 @@ When I visit '/parents'
 Then I see the name of each parent record in the system
 
 
-[R, ] ] done
+[R, ] done
 #### User Story 2, Parent Show (x2)
 As a visitor
 When I visit '/parents/:id'
