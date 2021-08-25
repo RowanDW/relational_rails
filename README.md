@@ -43,7 +43,7 @@ Then I see the parent with that id including the parent's attributes:
 - data from each column that is on the parent table
 
 
-[R, ] done
+[R,M] done
 #### User Story 3, Child Index (x2)
 As a visitor
 When I visit '/child_table_name'
