@@ -1,4 +1,6 @@
 <h1>Welcome to Ranches</h1>
 <% @ranches.each do |ranch| %>
   <h3><%= ranch.name %></h3>
+  <p><%= "Max Capacity: #{ranch.max_capacity}" %></p>
+  <p><%= "Certified Humane: #{ranch.certified_humane}" %></p>
 <% end %>
