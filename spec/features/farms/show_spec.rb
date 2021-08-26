@@ -28,7 +28,7 @@ RSpec.describe 'the farms show page' do
     expect(page).to_not have_content(@farm2.name)
   end
 
-  it 'can see the crops count of the farm' do
+  it 'can see the child crops count of the farm' do
     visit "/farms/#{@farm1.id}"
 
     expect(page).to have_content("Number of Crops: 2")
