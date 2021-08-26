@@ -63,9 +63,9 @@ RSpec.describe 'the ranches show page' do
   it 'links to ranch cows index page' do
     visit "/ranches/#{@ranch_1.id}"
 
-    expect(page).to have_content("Visit Cows")
+    expect(page).to have_content("Visit Fernando's Fine Bovines's Cows")
 
-    click_on "Visit Cows"
+    click_on "Visit Fernando's Fine Bovines's Cows"
     expect(current_path).to eq("/ranches/#{@ranch_1.id}/cows")
   end
 end
