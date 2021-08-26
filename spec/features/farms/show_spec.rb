@@ -71,4 +71,13 @@ RSpec.describe 'the farms show page' do
     click_on "Ranches Index"
     expect(current_path).to eq("/ranches")
   end
+
+  it 'links to farm crops index page' do
+    visit "/farms/#{@farm1.id}"
+
+    expect(page).to have_content("Visit Crops")
+
+    click_on "Visit Crops"
+    expect(current_path).to eq("/farms/#{@farm1.id}/crops")
+  end
 end
