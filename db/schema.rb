@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_25_043723) do
+ActiveRecord::Schema.define(version: 2021_08_25_172517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 2021_08_25_043723) do
     t.string "name"
     t.integer "age"
     t.boolean "grass_fed"
-    t.bigint "ranches_id"
+    t.bigint "ranch_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ranches_id"], name: "index_cows_on_ranches_id"
+    t.index ["ranch_id"], name: "index_cows_on_ranch_id"
   end
 
   create_table "crops", force: :cascade do |t|
@@ -51,6 +51,6 @@ ActiveRecord::Schema.define(version: 2021_08_25_043723) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "cows", "ranches", column: "ranches_id"
+  add_foreign_key "cows", "ranches"
   add_foreign_key "crops", "farms"
 end
