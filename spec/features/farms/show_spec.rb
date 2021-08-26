@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'the farms show page' do
 
   it 'can see all the attributes of the farm' do
-    farm = Farm.create!(name: "Shrute Farms", acres: 40, organic: true)
+    farm = Farm.create!(name: "Schrute Farms", acres: 40, organic: true)
     farm2 = Farm.create!(name: "Old MacDonald's", acres: 100, organic: false)
 
     visit "/farms/#{farm.id}"

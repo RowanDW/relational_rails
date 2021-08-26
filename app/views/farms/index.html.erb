@@ -1,5 +1,6 @@
 <h1> Welcome to Farms </h1>
 
 <% @farms.each do |farm| %>
-  <p><%= farm.name %></p>
+  <h3><%= farm.name %></h3>
+  <p>Created at: <%= farm.created_at %></p>
 <% end %>
