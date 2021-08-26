@@ -1,4 +1,5 @@
 <h1>Welcome to Ranches</h1>
 <% @ranches.each do |ranch| %>
   <h3><%= ranch.name %></h3>
+  <p>Created at: <%= ranch.created_at %></p>
 <% end %>
