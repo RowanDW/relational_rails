@@ -1,6 +1,6 @@
 class RanchesController < ApplicationController
   def index
-    @ranches = Ranch.all
+    @ranches = Ranch.order(created_at: :desc)
   end
 
   def show
