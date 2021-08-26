@@ -80,7 +80,7 @@ When I visit any page on the site
 Then I see a link at the top of the page that takes me to the Parent Index
 
 
-[ ] done
+[R,M] done
 #### User Story 10, Parent Child Index Link
 As a visitor
 When I visit a parent show page ('/parents/:id')
