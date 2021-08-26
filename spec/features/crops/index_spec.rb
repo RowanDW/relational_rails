@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'the crops index page' do
 
   it 'displays the attributes of each crop' do
-    farm = Farm.create!(name: "Shrute Farms", acres: 40, organic: true)
+    farm = Farm.create!(name: "Schrute Farms", acres: 40, organic: true)
     crop1 = farm.crops.create!(name: 'Tomatoes', yield: 30, annual: true)
     crop2 = farm.crops.create!(name: 'Beans', yield: 65, annual: true)
 

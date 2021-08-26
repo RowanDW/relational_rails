@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'displays name of each crop in database' do
 
   it 'displays the attributes of each crop of the farm' do
-    farm = Farm.create!(name: "Shrute Farms", acres: 40, organic: true)
+    farm = Farm.create!(name: "Schrute Farms", acres: 40, organic: true)
     farm2 = Farm.create!(name: "Old MacDonald's", acres: 80, organic: false)
     crop1 = farm.crops.create!(name: 'Tomatoes', yield: 30, annual: true)
     crop2 = farm2.crops.create!(name: 'Beans', yield: 65, annual: true)
