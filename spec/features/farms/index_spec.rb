@@ -1,10 +1,5 @@
 require 'rails_helper'
 
-# As a visitor
-# When I visit the parent index,
-# I see that records are ordered by most recently created first
-# And next to each of the records I see when it was created
-
 RSpec.describe 'the farm index page' do
 
   before :each do
@@ -27,7 +22,7 @@ RSpec.describe 'the farm index page' do
 
   it 'shows the creation time next to each record' do
     visit '/farms'
-    
+
     expect(page).to have_content(@farm.created_at)
     expect(page).to have_content(@farm2.created_at)
   end
