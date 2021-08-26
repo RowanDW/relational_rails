@@ -1,9 +1,5 @@
 require 'rails_helper'
 
-# As a visitor
-# When I visit a parent's show page
-# I see a count of the number of children associated with this parent
-
 RSpec.describe 'the ranches show page' do
   before(:each) do
     @ranch_1 = Ranch.create!(name: "Fernando's Fine Bovines", max_capacity: 50, certified_humane: true)
@@ -30,7 +26,37 @@ RSpec.describe 'the ranches show page' do
 
   it 'displays a count of children associated with this parent' do
     visit "/ranches/#{@ranch_1.id}"
-    save_and_open_page
+
     expect(page).to have_content("Number of Cows: 2")
+  end
+
+  it 'links to all child indexes' do
+    visit "/ranches/#{@ranch_1.id}"
+
+    expect(page).to have_content("Crops Index")
+    expect(page).to have_content("Cows Index")
+
+    click_on "Crops Index"
+    expect(current_path).to eq("/crops")
+
+    visit "/ranches/#{@ranch_1.id}"
+
+    click_on "Cows Index"
+    expect(current_path).to eq("/cows")
+  end
+
+  it 'links to all parent indexes' do
+    visit "/ranches/#{@ranch_1.id}"
+
+    expect(page).to have_content("Farms Index")
+    expect(page).to have_content("Ranches Index")
+
+    click_on "Farms Index"
+    expect(current_path).to eq("/farms")
+
+    visit "/ranches/#{@ranch_1.id}"
+
+    click_on "Ranches Index"
+    expect(current_path).to eq("/ranches")
   end
 end
