@@ -1,10 +1,5 @@
 require 'rails_helper'
 
-# As a visitor
-# When I visit the parent index,
-# I see that records are ordered by most recently created first
-# And next to each of the records I see when it was created
-
 RSpec.describe 'Ranches index' do
   before(:each) do
     @ranch_1 = Ranch.create!(name: "Fernando's Fine Bovines", max_capacity: 50, certified_humane: true)
@@ -26,8 +21,38 @@ RSpec.describe 'Ranches index' do
 
   it 'displays created_at next to each record' do
     visit "/ranches"
-    
+
     expect(page).to have_content(@ranch_1.created_at)
     expect(page).to have_content(@ranch_2.created_at)
+  end
+
+  it 'links to all child indexes' do
+    visit "/ranches"
+
+    expect(page).to have_content("Crops Index")
+    expect(page).to have_content("Cows Index")
+
+    click_on "Crops Index"
+    expect(current_path).to eq("/crops")
+
+    visit "/ranches"
+
+    click_on "Cows Index"
+    expect(current_path).to eq("/cows")
+  end
+
+  it 'links to all parent indexes' do
+    visit "/ranches"
+
+    expect(page).to have_content("Farms Index")
+    expect(page).to have_content("Ranches Index")
+
+    click_on "Farms Index"
+    expect(current_path).to eq("/farms")
+
+    visit "/ranches"
+
+    click_on "Ranches Index"
+    expect(current_path).to eq("/ranches")
   end
 end
