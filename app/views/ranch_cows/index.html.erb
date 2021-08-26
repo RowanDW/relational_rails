@@ -1,0 +1,10 @@
+<h1><%= @ranch.name %></h1>
+
+<% @ranch.cows.each do |cow| %>
+  <h1>Name: <%= cow.name %></h1>
+  <p>Age: <%= cow.age %></p>
+  <p>Grass fed?: <%= cow.grass_fed %></p>
+  <p>Ranch id: <%= cow.ranch_id %></p>
+  <p>Created at: <%= cow.created_at %></p>
+  <p>Updated at: <%= cow.updated_at %></p>
+<% end %>
