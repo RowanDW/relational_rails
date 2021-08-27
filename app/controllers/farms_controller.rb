@@ -1,7 +1,7 @@
 class FarmsController < ApplicationController
 
   def index
-    @farms = Farm.order(created_at: :desc)
+    @farms = Farm.order_desc_created_at
   end
 
   def show
