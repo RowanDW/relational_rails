@@ -5,7 +5,7 @@ class Farm < ApplicationRecord
     crops.count
   end
 
-  def self.order_desc_created_at
+  def self.order_created_at_desc
     order(created_at: :desc)
   end
 end

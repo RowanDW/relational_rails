@@ -16,9 +16,9 @@ RSpec.describe Ranch do
   end
 
   describe 'class methods' do
-    describe '#order_desc_created_at' do
+    describe '#order_created_at_desc' do
       it 'can order ranches in descending order' do
-        expect(Ranch.order_desc_created_at).to eq([@ranch_3, @ranch_2, @ranch_1])
+        expect(Ranch.order_created_at_desc).to eq([@ranch_3, @ranch_2, @ranch_1])
       end
     end
   end
