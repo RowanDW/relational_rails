@@ -1,0 +1,17 @@
+<%= form_with url: "/farms/#{@farm.id}/crops", method: :post, local: true do |form| %>
+  <p>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :yield %>
+    <%= form.number_field :yield %>
+  </p>
+  <p>
+    <%= form.label :annual %>
+    <%= form.check_box :annual %>
+  </p>
+  <p>
+    <%= form.submit "Create #{@farm.name} Crop" %>
+  </p>
+<% end %>
