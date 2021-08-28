@@ -15,6 +15,16 @@ class RanchesController < ApplicationController
     redirect_to '/ranches'
   end
 
+  def edit
+    @ranch = Ranch.find(params[:id])
+  end
+
+  def update
+    ranch = Ranch.find(params[:id])
+    ranch.update(ranch_params)
+    redirect_to "/ranches/#{ranch.id}"
+  end
+
   private
   def ranch_params
     params.permit(:name, :max_capacity, :certified_humane)

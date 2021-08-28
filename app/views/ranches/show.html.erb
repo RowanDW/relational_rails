@@ -11,4 +11,5 @@
 <p>Created at: <%= @ranch.created_at %></p>
 <p>Updated at: <%= @ranch.updated_at %></p>
 
+<%= button_to "Edit #{@ranch.name}", "/ranches/#{@ranch.id}/edit", method: :get %>
 <a href="/ranches/<%= @ranch.id %>/cows">Visit <%= @ranch.name %>'s Cows</a>
