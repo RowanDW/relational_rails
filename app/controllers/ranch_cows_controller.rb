@@ -1,6 +1,8 @@
 class RanchCowsController < ApplicationController
   def index
     @ranch = Ranch.find(params[:ranch_id])
+    @cows = @ranch.cows
+    @cows = @ranch.cows.sort_by_name if params[:sorted] == "true"
   end
 
   def new
@@ -13,11 +15,11 @@ class RanchCowsController < ApplicationController
     redirect_to("/ranches/#{ranch.id}/cows")
   end
 
-  def sort
-    ranch = Ranch.find(params[:id])
-binding.pry
-    redirect_to("/ranches/#{ranch.id}/cows")
-  end
+#   def sort
+#     ranch = Ranch.find(params[:id])
+# binding.pry
+#     redirect_to("/ranches/#{ranch.id}/cows")
+#   end
 
   private
   def ranch_cows_params

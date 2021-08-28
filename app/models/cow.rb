@@ -5,7 +5,7 @@ class Cow < ApplicationRecord
     Cow.where(grass_fed: true)
   end
 
-  def self.sort
+  def self.sort_by_name
     Cow.order(:name)
 
     # Cow.all.sort_by do |cow|
