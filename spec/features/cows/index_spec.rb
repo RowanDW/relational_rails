@@ -1,6 +1,3 @@
-# As a visitor
-# When I visit '/child_table_name'
-# Then I see each Child in the system including the Child's attributes:
 require 'rails_helper'
 
 RSpec.describe '#the cows index page' do
@@ -18,25 +15,19 @@ RSpec.describe '#the cows index page' do
 
     expect(page).to have_content("Bessie Lou")
     expect(page).to have_content("Bobbie Jean")
-    expect(page).to have_content("Spotty Sue")
 
     expect(page).to have_content("Age: 2")
     expect(page).to have_content("Age: 4")
-    expect(page).to have_content("Age: 3")
 
     expect(page).to have_content("Grass fed?: true")
-    expect(page).to have_content("Grass fed?: false")
 
     expect(page).to have_content("Ranch id: #{@ranch_1.id}")
-    expect(page).to have_content("Ranch id: #{@ranch_2.id}")
 
     expect(page).to have_content("Created at: #{@cow_1.created_at}")
     expect(page).to have_content("Created at: #{@cow_2.created_at}")
-    expect(page).to have_content("Created at: #{@cow_3.created_at}")
 
     expect(page).to have_content("Updated at: #{@cow_1.updated_at}")
     expect(page).to have_content("Updated at: #{@cow_2.updated_at}")
-    expect(page).to have_content("Updated at: #{@cow_3.updated_at}")
   end
 
   it 'links to all child indexes' do
@@ -67,5 +58,16 @@ RSpec.describe '#the cows index page' do
 
     click_on "Ranches Index"
     expect(current_path).to eq("/ranches")
+  end
+
+  # As a visitor
+  # When I visit the child index
+  # Then I only see records where the boolean column is `true`
+  it 'only shows grass_fed cows' do
+    visit '/cows'
+save_and_open_page
+    expect(page).to have_content("Bessie Lou")
+    expect(page).to have_content("Bobbie Jean")
+    expect(page).to_not have_content("Spotty Sue")
   end
 end
