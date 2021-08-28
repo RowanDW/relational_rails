@@ -5,6 +5,7 @@ RSpec.describe 'the crops index page' do
     @farm = Farm.create!(name: "Schrute Farms", acres: 40, organic: true)
     @crop1 = @farm.crops.create!(name: 'Tomatoes', yield: 30, annual: true)
     @crop2 = @farm.crops.create!(name: 'Beans', yield: 65, annual: true)
+    @crop3 = @farm.crops.create!(name: 'Apples', yield: 22, annual: false)
   end
 
   it 'displays the attributes of each crop' do
@@ -60,5 +61,13 @@ RSpec.describe 'the crops index page' do
 
     click_on "Ranches Index"
     expect(current_path).to eq("/ranches")
+  end
+
+  it 'only shows crops that where annual is true' do
+    visit '/crops'
+
+    expect(page).to have_content("Tomatoes")
+    expect(page).to have_content("Beans")
+    expect(page).to_not have_content("Apples")
   end
 end

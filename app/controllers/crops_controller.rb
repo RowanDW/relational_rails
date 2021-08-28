@@ -1,7 +1,7 @@
 class CropsController < ApplicationController
 
   def index
-    @crops = Crop.all
+    @crops = Crop.only_annuals
   end
 
   def show
