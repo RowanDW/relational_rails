@@ -10,3 +10,5 @@
 <p>Updated At: <%= @crop.updated_at %></p>
 <p>Created At: <%= @crop.created_at %></p>
 <p>ID: <%= @crop.id %></p>
+
+<%= button_to "Update #{@crop.name}", "/crops/#{@crop.id}/edit", method: :get %>
