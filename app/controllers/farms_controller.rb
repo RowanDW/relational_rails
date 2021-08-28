@@ -12,7 +12,7 @@ class FarmsController < ApplicationController
   end
 
   def create
-    Farm.create!(farm_params)
+    Farm.create(farm_params)
     redirect_to '/farms'
   end
 
@@ -21,9 +21,9 @@ class FarmsController < ApplicationController
   end
 
   def update
-  farm = Farm.find(params[:id])
-  farm.update(farm_params)
-  redirect_to "/farms/#{farm.id}"
+    farm = Farm.find(params[:id])
+    farm.update(farm_params)
+    redirect_to "/farms/#{farm.id}"
   end
 
   private
