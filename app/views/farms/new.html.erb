@@ -1,0 +1,12 @@
+<%= form_with url: '/farms', method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :acres %>
+  <%= form.number_field :acres %>
+
+  <%= form.label :organic %>
+  <%= form.check_box :organic %>
+
+  <%= form.submit "Create Farm" %>
+<% end %>
