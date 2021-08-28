@@ -133,7 +133,7 @@ a new child object/row is created for that parent,
 and I am redirected to the Parent Childs Index page where I can see the new child listed
 
 
-[ ] done
+[R,] done
 #### User Story 14, Child Update (x2)
 As a visitor
 When I visit a Child Show page
