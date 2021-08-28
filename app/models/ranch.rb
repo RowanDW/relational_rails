@@ -6,6 +6,7 @@ class Ranch < ApplicationRecord
   end
 
   def self.order_created_at_desc
+    binding.pry
     order(created_at: :desc)
   end
 end
