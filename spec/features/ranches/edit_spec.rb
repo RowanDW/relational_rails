@@ -14,11 +14,10 @@ require 'rails_helper'
 RSpec.describe 'Ranch editing' do
   before(:each) do
     @ranch_1 = Ranch.create!(name: "Fernando's Fine Bovines", max_capacity: 50, certified_humane: true)
-    @ranch_2 = Ranch.create!(name: "Janie's Jolly Cow Corral", max_capacity: 80, certified_humane: false)
   end
 
   it 'links to the edit page' do
-    visit '/ranches'
+    visit "/ranches/#{@ranch_1.id}"
 
     click_button("Edit Fernando's Fine Bovines")
 
@@ -26,7 +25,7 @@ RSpec.describe 'Ranch editing' do
   end
 
   it 'can edit the ranch' do
-    visit '/ranches'
+    visit "/ranches/#{@ranch_1.id}"
 
     expect(page).to have_content("Fernando's Fine Bovines")
 
