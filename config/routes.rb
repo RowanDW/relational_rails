@@ -5,9 +5,11 @@ Rails.application.routes.draw do
 
   get '/farms', to: 'farms#index'
   get '/farms/new', to: 'farms#new'
+  get '/farms/:id/crops/new', to: 'farm_crops#new'
   get '/farms/:id/crops', to: 'farm_crops#index'
   get '/farms/:id/edit', to: 'farms#edit'
   get '/farms/:id', to: 'farms#show'
+  post '/farms/:id/crops', to: 'farm_crops#create'
   post '/farms', to: 'farms#create'
   patch '/farms/:id', to: 'farms#update'
 

@@ -14,3 +14,5 @@
   <p>Created At: <%= crop.created_at %></p>
   <p>ID: <%= crop.id %></p>
 <% end %>
+
+<%= link_to "New #{@farm.name} Crop", "/farms/#{@farm.id}/crops/new" %>
