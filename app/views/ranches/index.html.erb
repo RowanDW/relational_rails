@@ -7,6 +7,7 @@
 <% @ranches.each do |ranch| %>
   <h3><%= ranch.name %></h3>
   <p>Created at: <%= ranch.created_at %></p>
+  <%= button_to "Edit #{ranch.name}", "/ranches/#{ranch.id}/edit", method: :get %>
 <% end %>
 
 <%= link_to "New Ranch", "ranches/new" %>
