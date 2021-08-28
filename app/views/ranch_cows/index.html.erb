@@ -13,3 +13,5 @@
   <p>Created at: <%= cow.created_at %></p>
   <p>Updated at: <%= cow.updated_at %></p>
 <% end %>
+
+<%= link_to "New Cow", "/ranches/#{@ranch.id}/cows/new" %>
