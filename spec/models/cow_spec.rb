@@ -19,9 +19,9 @@ RSpec.describe Cow do
       end
     end
 
-    describe '.sort' do
+    describe '.sort_by_name' do
       it 'can alphabetically sort by name' do
-        expect(Cow.sort).to eq([@cow_1, @cow_2, @cow_3])
+        expect(Cow.sort_by_name).to eq([@cow_1, @cow_2, @cow_3])
       end
 
       # it 'is case insensitive' do
