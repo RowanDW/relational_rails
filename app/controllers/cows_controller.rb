@@ -1,6 +1,6 @@
 class CowsController < ApplicationController
   def index
-    @cows = Cow.all
+    @cows = Cow.all_grass_fed
   end
 
   def show
