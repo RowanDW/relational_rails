@@ -91,7 +91,7 @@ Iteration 1 will be reviewed at your second check-in
 
 ## CRUD
 
-[ ] done
+[R,M] done
 #### User Story 11, Parent Creation (x2)
 As a visitor
 When I visit the Parent Index page
