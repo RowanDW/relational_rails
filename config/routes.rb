@@ -30,4 +30,6 @@ Rails.application.routes.draw do
 
   get '/cows', to: 'cows#index'
   get '/cows/:id', to: 'cows#show'
+  get '/cows/:id/edit', to: 'cows#edit'
+  patch '/cows/:id', to: 'cows#update'
 end
