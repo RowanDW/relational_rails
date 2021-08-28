@@ -11,4 +11,7 @@
 <p>ID: <%= @farm.id %></p>
 <p>Number of Crops: <%= @farm.crops_count %></p>
 
-<a href="/farms/<%= @farm.id %>/crops">Visit <%= @farm.name %>'s Crops</a>
+
+<%= link_to "Visit #{@farm.name}'s Crops", "/farms/#{@farm.id}/crops" %>
+
+<%= button_to "Edit #{@farm.name}", "/farms/#{@farm.id}/edit", method: :get %>
