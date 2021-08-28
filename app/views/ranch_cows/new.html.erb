@@ -1,0 +1,17 @@
+<%= form_with url: "/ranches/#{@ranch.id}/cows", method: :post, local: true do |form| %>
+  <p>
+    <%= form.label        :name %>
+    <%= form.text_field   :name %>
+  </p>
+  <p>
+    <%= form.label        :age %>
+    <%= form.number_field :age %>
+  </p>
+  <p>
+    <%= form.label        :grass_fed %>
+    <%= form.check_box    :grass_fed %>
+  </p>
+  <p>
+    <%= form.submit 'Create Cow' %>
+  </p>
+<% end %>

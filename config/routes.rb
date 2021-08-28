@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get '/ranches/new', to: 'ranches#new'
   get '/ranches/:id', to: 'ranches#show'
   get '/ranches/:ranch_id/cows', to: 'ranch_cows#index'
+  get '/ranches/:ranch_id/cows/new', to: 'ranch_cows#new'
+  post 'ranches/:ranch_id/cows', to: 'ranch_cows#create'
   post '/ranches', to: 'ranches#create'
   get '/ranches/:id/edit', to: 'ranches#edit'
   patch '/ranches/:id', to: 'ranches#update'
