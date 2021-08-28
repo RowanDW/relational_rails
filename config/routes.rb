@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   get '/crops/:id', to: 'crops#show'
 
   get '/ranches', to: 'ranches#index'
+  get '/ranches/new', to: 'ranches#new'
   get '/ranches/:id', to: 'ranches#show'
   get '/ranches/:ranch_id/cows', to: 'ranch_cows#index'
+  post '/ranches', to: 'ranches#create'
 
   get '/cows', to: 'cows#index'
   get '/cows/:id', to: 'cows#show'
