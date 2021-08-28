@@ -1,10 +1,17 @@
 <%= form_with url: '/ranches', method: :post, local: true do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <%= form.label :max_capacity %>
-  <%= form.text_field :max_capacity %>
-  <%= form.label :certified_humane %>
-  <%= form.text_field :certified_humane %>
-
-  <%= form.submit "Create Ranch" %>
+<p>
+  <%= form.label        :name %>
+  <%= form.text_field   :name %>
+</p>
+<p>
+  <%= form.label        :max_capacity %>
+  <%= form.number_field :max_capacity %>
+</p>
+<p>
+  <%= form.label        :certified_humane %>
+  <%= form.check_box    :certified_humane %>
+</p>
+<p>
+  <%= form.submit 'Create Ranch' %>
+</p>
 <% end %>

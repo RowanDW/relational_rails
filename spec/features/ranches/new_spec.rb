@@ -22,9 +22,9 @@ RSpec.describe 'new Ranch creation' do
   it 'can create a new ranch' do
     visit "/ranches/new"
 
-    fill_in("name",             with: "Fernando's Fine Bovines")
-    fill_in("max_capacity",     with: 50)
-    fill_in("certified_humane", with: true)
+    fill_in("name",         with: "Fernando's Fine Bovines")
+    fill_in("max_capacity", with: 50)
+    check("certified_humane")
 
     click_button('Create Ranch')
 
