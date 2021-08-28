@@ -119,7 +119,7 @@ the parent's info is updated,
 and I am redirected to the Parent's Show page where I see the parent's updated info
 
 
-[,M] done
+[R,M] done
 #### User Story 13, Parent Child Creation (x2)
 As a visitor
 When I visit a Parent Childs Index page
