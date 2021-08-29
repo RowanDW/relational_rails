@@ -1,8 +1,13 @@
 class RanchCowsController < ApplicationController
   def index
     @ranch = Ranch.find(params[:ranch_id])
-    @cows = @ranch.cows
-    @cows = @ranch.cows.sort_by_name if params[:sorted] == "true"
+    if params[:sorted] == "true"
+      @cows = @ranch.cows.sort_by_name
+    elsif params[:age_threshold].nil?
+      @cows = @ranch.cows
+    else
+      @cows = @ranch.cows.older_than(params[:age_threshold])
+    end
   end
 
   def new

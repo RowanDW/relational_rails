@@ -29,5 +29,11 @@ RSpec.describe Cow do
       #   expect(Cow.sort).to eq([cow_4, @cow_1, @cow_2, @cow_3])
       # end
     end
+
+    describe '.older_than(age_threshold)' do
+      it 'returns cows older than age_threshold' do
+        expect(Cow.older_than(2)).to eq([@cow_2, @cow_3])
+      end
+    end
   end
 end
