@@ -8,6 +8,8 @@ class Cow < ApplicationRecord
   def self.sort_by_name
     Cow.order(:name)
 
+    # Cow.order('lower(name)')
+
     # Cow.all.sort_by do |cow|
     #   cow.name.downcase
     # end

@@ -15,12 +15,6 @@ class RanchCowsController < ApplicationController
     redirect_to("/ranches/#{ranch.id}/cows")
   end
 
-#   def sort
-#     ranch = Ranch.find(params[:id])
-# binding.pry
-#     redirect_to("/ranches/#{ranch.id}/cows")
-#   end
-
   private
   def ranch_cows_params
     params.permit(:name, :age, :grass_fed)
