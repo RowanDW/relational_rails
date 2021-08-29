@@ -37,7 +37,7 @@ RSpec.describe 'Cow editing' do
     check("grass_fed")
 
     click_button("Update Cow")
-    save_and_open_page
+
     expect(current_path).to eq("/cows/#{@cow_2.id}")
     expect(page).to have_content("Bonnie Jean")
   end

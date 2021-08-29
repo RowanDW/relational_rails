@@ -30,10 +30,9 @@ RSpec.describe 'new cow creation' do
     fill_in("name", with: "Suzie Moo")
     fill_in("age",  with: 5)
     check("grass_fed")
-    save_and_open_page
 
     click_button('Create Cow')
-    
+
     expect(current_path).to eq("/ranches/#{@ranch_1.id}/cows")
     expect(page).to have_content("Suzie Moo")
   end
