@@ -80,6 +80,4 @@ RSpec.describe 'the farms show page' do
     click_on "Visit Schrute Farms's Crops"
     expect(current_path).to eq("/farms/#{@farm1.id}/crops")
   end
-
-  i
 end

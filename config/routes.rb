@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/crops/:id/edit', to: 'crops#edit'
   get '/crops/:id', to: 'crops#show'
   patch '/crops/:id', to: 'crops#update'
+  delete '/crops/:id', to: 'crops#destroy'
 
   get '/ranches', to: 'ranches#index'
   get '/ranches/new', to: 'ranches#new'
