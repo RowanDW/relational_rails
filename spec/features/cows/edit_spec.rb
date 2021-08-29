@@ -41,4 +41,31 @@ RSpec.describe 'Cow editing' do
     expect(current_path).to eq("/cows/#{@cow_2.id}")
     expect(page).to have_content("Bonnie Jean")
   end
+
+#   As a visitor
+# When I visit the `child_table_name` index page or a parent `child_table_name` index page
+# Next to every child, I see a link to edit that child's info
+# When I click the link
+# I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 11
+  it 'is linked from the cow index page' do
+    visit "/cows"
+
+    click_button("Edit Bessie Lou")
+    expect(current_path).to eq("/cows/#{@cow_1.id}/edit")
+
+    visit "/cows"
+    click_button("Edit Bobbie Jean")
+    expect(current_path).to eq("/cows/#{@cow_2.id}/edit")
+  end
+
+  it 'is linked from the ranch cow index page' do
+    visit "/ranches/#{@ranch_1.id}/cows"
+
+    click_button("Edit Bessie Lou")
+    expect(current_path).to eq("/cows/#{@cow_1.id}/edit")
+
+    visit "/ranches/#{@ranch_1.id}/cows"
+    click_button("Edit Bobbie Jean")
+    expect(current_path).to eq("/cows/#{@cow_2.id}/edit")
+  end
 end

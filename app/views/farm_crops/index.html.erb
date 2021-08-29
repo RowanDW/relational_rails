@@ -4,8 +4,9 @@
 <%= link_to "Cows Index", "/cows" %>
 
 <h1> <%= @farm.name %> </h1>
+<p><%= button_to "Alphabetical", "/farms/#{@farm.id}/crops?alphabetical=true", params: {alphabetical: true}, method: :get %></p>
 
-<% @farm.crops.each do |crop| %>
+<% @crops.each do |crop| %>
   <h3><%= crop.name %></h3>
   <p>Yield: <%= crop.yield %> bushels</p>
   <p>Annual?: <%= crop.annual %></p>
@@ -13,6 +14,8 @@
   <p>Updated At: <%= crop.updated_at %></p>
   <p>Created At: <%= crop.created_at %></p>
   <p>ID: <%= crop.id %></p>
+  <p><%= button_to "Edit #{crop.name}", "/crops/#{crop.id}/edit", method: :get %></p>
+
 <% end %>
 
 <%= link_to "New #{@farm.name} Crop", "/farms/#{@farm.id}/crops/new" %>

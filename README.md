@@ -133,7 +133,7 @@ a new child object/row is created for that parent,
 and I am redirected to the Parent Childs Index page where I can see the new child listed
 
 
-[ ] done
+[R,M] done
 #### User Story 14, Child Update (x2)
 As a visitor
 When I visit a Child Show page
@@ -148,7 +148,7 @@ and I am redirected to the Child Show page where I see the Child's updated infor
 ## ActiveRecord
 
 
-[ ] done
+[R,M] done
 #### User Story 15, Child Index only shows `true` Records (x2)
 As a visitor
 When I visit the child index
@@ -166,7 +166,7 @@ I'm taken back to the Parent's children Index Page where I see all of the parent
 ## Usability
 
 
-[ ] done
+[R,M] done
 #### User Story 17, Parent Update From Parent Index Page (x2)
 As a visitor
 When I visit the parent index page
@@ -175,7 +175,7 @@ When I click the link
 I should be taken to that parents edit page where I can update its information just like in #### User Story 4
 
 
-[ ] done
+[R,M] done
 #### User Story 18, Child Update From Childs Index Page (x1)
 As a visitor
 When I visit the `child_table_name` index page or a parent `child_table_name` index page
