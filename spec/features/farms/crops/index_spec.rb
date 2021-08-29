@@ -95,7 +95,7 @@ RSpec.describe 'displays name of each crop in database' do
 
   it "can submit a form that filters results" do
 
-    @crop4 = @farm.crops.create!(name: 'Cabbage', yield: 12, annual: true)
+    crop4 = @farm.crops.create!(name: 'Cabbage', yield: 12, annual: true)
 
     visit "/farms/#{@farm.id}/crops"
 
