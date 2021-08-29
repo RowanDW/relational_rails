@@ -1,6 +1,6 @@
 class RanchCowsController < ApplicationController
   def index
-    @ranch = Ranch.find(params[:ranch_id])
+    @ranch = Ranch.find(params[:id])
     if params[:sorted] == "true"
       @cows = @ranch.cows.sort_by_name
     elsif params[:age_threshold].nil?
@@ -11,11 +11,11 @@ class RanchCowsController < ApplicationController
   end
 
   def new
-    @ranch = Ranch.find(params[:ranch_id])
+    @ranch = Ranch.find(params[:id])
   end
 
   def create
-    ranch = Ranch.find(params[:ranch_id])
+    ranch = Ranch.find(params[:id])
     ranch.cows.create(ranch_cows_params)
     redirect_to("/ranches/#{ranch.id}/cows")
   end
