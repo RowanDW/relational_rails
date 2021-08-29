@@ -70,4 +70,20 @@ RSpec.describe 'the crops index page' do
     expect(page).to have_content("Beans")
     expect(page).to_not have_content("Apples")
   end
+
+  it 'can link each crop to its edit page' do
+    visit '/crops'
+
+    expect(page).to have_button("Edit Tomatoes")
+    expect(page).to have_button("Edit Beans")
+
+    click_on "Edit Tomatoes"
+    expect(current_path).to eq("/crops/#{@crop1.id}/edit")
+
+    visit '/crops'
+
+    click_on "Edit Beans"
+    expect(current_path).to eq("/crops/#{@crop2.id}/edit")
+  end
+
 end
