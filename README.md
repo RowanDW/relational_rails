@@ -198,7 +198,7 @@ the parent is deleted, and all child records are deleted
 and I am redirected to the parent index page where I no longer see this parent
 
 
-[ ] done
+[R,M] done
 #### User Story 20, Child Delete (x2)
 As a visitor
 When I visit a child show page
