@@ -14,4 +14,8 @@ class Cow < ApplicationRecord
     #   cow.name.downcase
     # end
   end
+
+  def self.older_than(age_threshold)
+    Cow.where("age > #{age_threshold}")
+  end
 end

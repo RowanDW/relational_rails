@@ -17,3 +17,10 @@
 
 <%= link_to "New Cow", "/ranches/#{@ranch.id}/cows/new" %>
 <%= link_to "Sort Cows", "/ranches/#{@ranch.id}/cows?sorted=true" %>
+
+<%= form_with url: "/ranches/#{@ranch.id}/cows", method: :get, local: true do |form| %>
+  <%= form.label :age_threshold %>
+  <%= form.text_field :age_threshold %>
+
+  <%= form.submit 'Only return cows older than input age' %>
+<% end %>

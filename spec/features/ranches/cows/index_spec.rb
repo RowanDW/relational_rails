@@ -71,10 +71,21 @@ RSpec.describe 'Ranches cows index' do
     expect(current_path).to eq("/ranches/#{@ranch_1.id}/cows")
     expect("Bessie Lou").to appear_before("Bobbie Jean")
   end
+
+  it 'has a form to filter cows over input age' do
+    visit "/ranches/#{@ranch_1.id}/cows"
+
+    fill_in("age_threshold",  with: 2)
+    click_button("Only return cows older than input age")
+    expect(current_path).to eq("/ranches/#{@ranch_1.id}/cows")
+
+    expect(page).to have_content("Bobbie Jean")
+    expect(page).to_not have_content("Bessie Lou")
+  end
 end
 
 # As a visitor
 # When I visit the Parent's children Index Page
-# Then I see a link to sort children in alphabetical order
-# When I click on the link
-# I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+# I see a form that allows me to input a number value
+# When I input a number value and click the submit button that reads 'Only return records with more than `number` of `column_name`'
+# Then I am brought back to the current index page with only the records that meet that threshold shown.
