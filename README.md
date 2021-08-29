@@ -175,7 +175,7 @@ When I click the link
 I should be taken to that parents edit page where I can update its information just like in #### User Story 4
 
 
-[,M] done
+[R,M] done
 #### User Story 18, Child Update From Childs Index Page (x1)
 As a visitor
 When I visit the `child_table_name` index page or a parent `child_table_name` index page
