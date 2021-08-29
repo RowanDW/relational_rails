@@ -25,6 +25,11 @@ class RanchesController < ApplicationController
     redirect_to "/ranches/#{ranch.id}"
   end
 
+  def destroy
+    Ranch.destroy(params[:id])
+    redirect_to '/ranches'
+  end
+
   private
   def ranch_params
     params.permit(:name, :max_capacity, :certified_humane)

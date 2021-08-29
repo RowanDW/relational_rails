@@ -12,4 +12,5 @@
 <p>Updated at: <%= @ranch.updated_at %></p>
 
 <%= button_to "Edit #{@ranch.name}", "/ranches/#{@ranch.id}/edit", method: :get %>
+<%= button_to "Delete #{@ranch.name}", "/ranches/#{@ranch.id}", method: :delete %>
 <a href="/ranches/<%= @ranch.id %>/cows">Visit <%= @ranch.name %>'s Cows</a>

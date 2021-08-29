@@ -1,5 +1,5 @@
 class Ranch < ApplicationRecord
-  has_many :cows
+  has_many :cows, dependent: :destroy
 
   def cows_count
     cows.count

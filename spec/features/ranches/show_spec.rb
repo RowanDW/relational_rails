@@ -68,4 +68,16 @@ RSpec.describe 'the ranches show page' do
     click_on "Visit Fernando's Fine Bovines's Cows"
     expect(current_path).to eq("/ranches/#{@ranch_1.id}/cows")
   end
+
+  it 'can delete a ranch and its cows' do
+    visit "/ranches/#{@ranch_1.id}"
+
+    click_button("Delete Fernando's Fine Bovines")
+    expect(current_path).to eq("/ranches")
+    expect(page).to_not have_content("Fernando's Fine Bovines")
+
+    visit "/cows"
+    expect(page).to_not have_content("Bessie Lou")
+    expect(page).to_not have_content("Bobbie Jean")
+  end
 end
