@@ -2,6 +2,11 @@ class FarmCropsController < ApplicationController
 
   def index
     @farm = Farm.find(params[:id])
+    if params[:alphabetical] == 'true'
+      @crops = @farm.alphabatize_crops
+    else
+      @crops = @farm.crops
+    end
   end
 
   def new
@@ -16,6 +21,6 @@ class FarmCropsController < ApplicationController
 
   private
   def farm_crops_params
-    params.permit(:name, :yield, :annual)
+    params.permit(:name, :yield, :annual, :alphabetical)
   end
 end
