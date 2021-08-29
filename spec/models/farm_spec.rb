@@ -28,7 +28,7 @@ RSpec.describe Farm do
 
     describe '#yield_threshold' do
       it "can filter out crops under inputted num" do
-        @crop4 = @farm1.crops.create!(name: 'Cabbage', yield: 12, annual: true)
+        crop4 = @farm1.crops.create!(name: 'Cabbage', yield: 12, annual: true)
 
         expect(@farm1.yield_threshold(20)).to eq([@crop1, @crop3])
       end
