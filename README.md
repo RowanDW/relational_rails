@@ -166,7 +166,7 @@ I'm taken back to the Parent's children Index Page where I see all of the parent
 ## Usability
 
 
-[,M] done
+[R,M] done
 #### User Story 17, Parent Update From Parent Index Page (x2)
 As a visitor
 When I visit the parent index page
