@@ -1,5 +1,5 @@
 class Farm < ApplicationRecord
-  has_many :crops
+  has_many :crops, dependent: :destroy
 
   def crops_count
     crops.count

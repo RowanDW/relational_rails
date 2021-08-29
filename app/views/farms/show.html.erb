@@ -15,3 +15,4 @@
 <%= link_to "Visit #{@farm.name}'s Crops", "/farms/#{@farm.id}/crops" %>
 
 <%= button_to "Edit #{@farm.name}", "/farms/#{@farm.id}/edit", method: :get %>
+<%= button_to "Delete #{@farm.name}", "/farms/#{@farm.id}", method: :delete %>
