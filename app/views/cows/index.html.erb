@@ -12,4 +12,5 @@
   <p>Ranch id: <%= cow.ranch_id %></p>
   <p>Created at: <%= cow.created_at %></p>
   <p>Updated at: <%= cow.updated_at %></p>
+  <p><%= button_to "Edit #{cow.name}", "/cows/#{cow.id}/edit", method: :get %></p>
 <% end %>
