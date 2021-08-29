@@ -187,7 +187,7 @@ I should be taken to that `child_table_name` edit page where I can update its in
 
 ## CRUD
 
-[ ] done
+[R,M] done
 #### User Story 19, Parent Delete (x2)
 As a visitor
 When I visit a parent show page
