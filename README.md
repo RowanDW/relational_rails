@@ -210,7 +210,7 @@ and I am redirected to the child index page where I no longer see this child
 
 ## ActiveRecord
 
-[ ] done
+[R,M] done
 #### User Story 21, Display Records Over a Given Threshold (x2)
 As a visitor
 When I visit the Parent's children Index Page
@@ -221,7 +221,7 @@ Then I am brought back to the current index page with only the records that meet
 ## Usability
 
 
-[ ] done
+[R,M] done
 #### User Story 22, Parent Delete From Parent Index Page (x1)
 As a visitor
 When I visit the parent index page
@@ -230,7 +230,7 @@ When I click the link
 I am returned to the Parent Index Page where I no longer see that parent
 
 
-[ ] done
+[R,M] done
 #### User Story 23, Child Delete From Childs Index Page (x1)
 As a visitor
 When I visit the `child_table_name` index page or a parent `child_table_name` index page
