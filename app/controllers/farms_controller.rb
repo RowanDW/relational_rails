@@ -26,6 +26,11 @@ class FarmsController < ApplicationController
     redirect_to "/farms/#{farm.id}"
   end
 
+  def destroy
+    Farm.destroy(params[:id])
+    redirect_to '/farms'
+  end
+
   private
   def farm_params
     params.permit(:name, :acres, :organic)
