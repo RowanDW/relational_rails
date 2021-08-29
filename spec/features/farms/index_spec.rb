@@ -71,4 +71,16 @@ RSpec.describe 'the farm index page' do
     click_on "Edit Old MacDonald's"
     expect(current_path).to eq("/farms/#{@farm2.id}/edit")
   end
+
+  it "can display a delete button next to each farm" do
+    visit '/farms'
+
+    expect(page).to have_button("Delete Schrute Farms")
+    expect(page).to have_button("Delete Old MacDonald's")
+
+    click_on "Delete Schrute Farms"
+
+    expect(current_path).to eq('/farms')
+    expect(page).to_not have_content("Schrute Farms")
+  end
 end

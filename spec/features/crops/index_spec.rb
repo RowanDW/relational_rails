@@ -86,4 +86,16 @@ RSpec.describe 'the crops index page' do
     expect(current_path).to eq("/crops/#{@crop2.id}/edit")
   end
 
+  it "can display a delete button next to each crop" do
+    visit '/crops'
+
+    expect(page).to have_button("Delete Tomatoes")
+    expect(page).to have_button("Delete Beans")
+
+    click_on "Delete Tomatoes"
+    expect(current_path).to eq("/crops")
+
+    expect(page).to_not have_content("Tomatoes")
+  end
+
 end

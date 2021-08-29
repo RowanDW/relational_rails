@@ -14,5 +14,6 @@
   <p>Created At: <%= crop.created_at %></p>
   <p>ID: <%= crop.id %></p>
   <p><%= button_to "Edit #{crop.name}", "/crops/#{crop.id}/edit", method: :get %></p>
+  <p><%= button_to "Delete #{crop.name}", "/crops/#{crop.id}", method: :delete %></p>
 
 <% end %>
