@@ -65,4 +65,19 @@ RSpec.describe 'displays name of each crop in database' do
     click_on "Ranches Index"
     expect(current_path).to eq("/ranches")
   end
+
+  it 'can link each crop to its edit page' do
+    visit "/farms/#{@farm.id}/crops"
+
+    expect(page).to have_button("Edit Tomatoes")
+    expect(page).to have_button("Edit Peaches")
+
+    click_on "Edit Tomatoes"
+    expect(current_path).to eq("/crops/#{@crop1.id}/edit")
+
+    visit "/farms/#{@farm.id}/crops"
+
+    click_on "Edit Peaches"
+    expect(current_path).to eq("/crops/#{@crop3.id}/edit")
+  end
 end

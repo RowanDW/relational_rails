@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe 'the farm index page' do
 
   before :each do
-    @farm = Farm.create!(name: "Schrute Farms", acres: 40, organic: true)
+    @farm1 = Farm.create!(name: "Schrute Farms", acres: 40, organic: true)
     @farm2 = Farm.create!(name: "Old MacDonald's", acres: 100, organic: false)
   end
 
   it 'displays the name of each farm' do
     visit '/farms'
 
-    expect(page).to have_content(@farm.name)
+    expect(page).to have_content(@farm1.name)
     expect(page).to have_content(@farm2.name)
   end
 
@@ -23,7 +23,7 @@ RSpec.describe 'the farm index page' do
   it 'shows the creation time next to each record' do
     visit '/farms'
 
-    expect(page).to have_content(@farm.created_at)
+    expect(page).to have_content(@farm1.created_at)
     expect(page).to have_content(@farm2.created_at)
   end
 
@@ -55,5 +55,20 @@ RSpec.describe 'the farm index page' do
 
     click_on "Ranches Index"
     expect(current_path).to eq("/ranches")
+  end
+
+  it 'can link each parent to its edit page' do
+    visit '/farms'
+
+    expect(page).to have_button("Edit Schrute Farms")
+    expect(page).to have_button("Edit Old MacDonald's")
+
+    click_on "Edit Schrute Farms"
+    expect(current_path).to eq("/farms/#{@farm1.id}/edit")
+
+    visit '/farms'
+
+    click_on "Edit Old MacDonald's"
+    expect(current_path).to eq("/farms/#{@farm2.id}/edit")
   end
 end

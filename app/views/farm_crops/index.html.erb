@@ -13,6 +13,8 @@
   <p>Updated At: <%= crop.updated_at %></p>
   <p>Created At: <%= crop.created_at %></p>
   <p>ID: <%= crop.id %></p>
+  <p><%= button_to "Edit #{crop.name}", "/crops/#{crop.id}/edit", method: :get %></p>
+
 <% end %>
 
 <%= link_to "New #{@farm.name} Crop", "/farms/#{@farm.id}/crops/new" %>
