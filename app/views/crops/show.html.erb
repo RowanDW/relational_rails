@@ -12,3 +12,4 @@
 <p>ID: <%= @crop.id %></p>
 
 <%= button_to "Update #{@crop.name}", "/crops/#{@crop.id}/edit", method: :get %>
+<%= button_to "Delete #{@crop.name}", "/crops/#{@crop.id}", method: :delete %>

@@ -18,6 +18,11 @@ class CropsController < ApplicationController
     redirect_to "/crops/#{crop.id}"
   end
 
+  def destroy
+    Crop.destroy(params[:id])
+    redirect_to '/crops'
+  end
+
   private
   def crop_params
     params.permit(:name, :yield, :annual)
