@@ -8,6 +8,7 @@
   <h3><%= ranch.name %></h3>
   <p>Created at: <%= ranch.created_at %></p>
   <p><%= button_to "Edit #{ranch.name}", "/ranches/#{ranch.id}/edit", method: :get %></p>
+  <%= button_to "Delete #{ranch.name}", "/ranches/#{ranch.id}", method: :delete %>
 <% end %>
 
 <%= link_to "New Ranch", "ranches/new" %>
