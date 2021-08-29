@@ -12,4 +12,8 @@ class Farm < ApplicationRecord
   def alphabatize_crops
     crops.order(:name)
   end
+
+  def yield_threshold(num)
+    crops.where("yield > #{num}")
+  end
 end

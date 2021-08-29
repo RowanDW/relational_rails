@@ -92,4 +92,23 @@ RSpec.describe 'displays name of each crop in database' do
     expect(current_path).to eq("/farms/#{@farm.id}/crops")
     expect("Peaches").to appear_before("Tomatoes")
   end
+
+  it "can submit a form that filters results" do
+
+    @crop4 = @farm.crops.create!(name: 'Cabbage', yield: 12, annual: true)
+
+    visit "/farms/#{@farm.id}/crops"
+
+    expect(page).to have_content("Tomatoes")
+    expect(page).to have_content("Peaches")
+    expect(page).to have_content("Cabbage")
+
+    fill_in('yield_threshold', with: 20)
+    click_button("Only show crops with more than above bushels of yield")
+
+    expect(current_path).to eq("/farms/#{@farm.id}/crops")
+    expect(page).to have_content("Tomatoes")
+    expect(page).to have_content("Peaches")
+    expect(page).to_not have_content("Cabbage")
+  end
 end
