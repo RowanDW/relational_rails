@@ -11,3 +11,4 @@
 <p>Updated at: <%= @cow.updated_at %></p>
 
 <%= button_to "Edit #{@cow.name}", "/cows/#{@cow.id}/edit", method: :get %>
+<%= button_to "Delete #{@cow.name}", "/cows/#{@cow.id}", method: :delete %>

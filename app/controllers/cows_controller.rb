@@ -17,6 +17,11 @@ class CowsController < ApplicationController
     redirect_to "/cows/#{cow.id}"
   end
 
+  def destroy
+    Cow.destroy(params[:id])
+    redirect_to "/cows"
+  end
+
   private
   def cow_params
     params.permit(:name, :age, :grass_fed)
