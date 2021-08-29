@@ -3,7 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Ranches index' do
   before(:each) do
     @ranch_1 = Ranch.create!(name: "Fernando's Fine Bovines", max_capacity: 50, certified_humane: true)
+    @cow_2 = @ranch_1.cows.create!(name: "Bobbie Jean", age: 4, grass_fed: true)
+    @cow_1 = @ranch_1.cows.create!(name: "Bessie Lou", age: 2, grass_fed: true)
+
     @ranch_2 = Ranch.create!(name: "Janie's Jolly Cow Corral", max_capacity: 80, certified_humane: false)
+    @cow_3 = @ranch_2.cows.create!(name: "Spotty Sue", age: 3, grass_fed: false)
   end
 
   it 'displays the name of each ranch' do
@@ -54,5 +58,22 @@ RSpec.describe 'Ranches index' do
 
     click_on "Ranches Index"
     expect(current_path).to eq("/ranches")
+  end
+
+  it 'can delete any ranch and its cows' do
+    visit "/ranches"
+
+    click_button("Delete Fernando's Fine Bovines")
+    expect(current_path).to eq("/ranches")
+    expect(page).to_not have_content("Fernando's Fine Bovines")
+
+    click_button("Delete Janie's Jolly Cow Corral")
+    expect(current_path).to eq("/ranches")
+    expect(page).to_not have_content("Janie's Jolly Cow Corral")
+
+    visit "/cows"
+    expect(page).to_not have_content("Bessie Lou")
+    expect(page).to_not have_content("Bobbie Jean")
+    expect(page).to_not have_content("Spotty Sue")
   end
 end

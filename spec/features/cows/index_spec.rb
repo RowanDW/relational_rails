@@ -65,9 +65,20 @@ RSpec.describe '#the cows index page' do
   # Then I only see records where the boolean column is `true`
   it 'only shows grass_fed cows' do
     visit '/cows'
-    
+
     expect(page).to have_content("Bessie Lou")
     expect(page).to have_content("Bobbie Jean")
     expect(page).to_not have_content("Spotty Sue")
+  end
+
+  it 'can delete a cow' do
+    visit "/cows"
+
+    click_button("Delete Bessie Lou")
+    expect(current_path).to eq("/cows")
+    expect(page).to_not have_content("Bessie Lou")
+
+    click_button("Delete Bobbie Jean")
+    expect(page).to_not have_content("Bobbie Jean")
   end
 end
