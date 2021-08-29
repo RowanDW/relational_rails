@@ -80,4 +80,16 @@ RSpec.describe 'displays name of each crop in database' do
     click_on "Edit Peaches"
     expect(current_path).to eq("/crops/#{@crop3.id}/edit")
   end
+
+  it 'can click a link that alphabatizes the crops' do
+    visit "/farms/#{@farm.id}/crops"
+
+    expect("Tomatoes").to appear_before("Peaches")
+
+    expect(page).to have_button("Alphabetical")
+    click_on "Alphabetical"
+
+    expect(current_path).to eq("/farms/#{@farm.id}/crops")
+    expect("Peaches").to appear_before("Tomatoes")
+  end
 end
