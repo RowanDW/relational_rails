@@ -6,6 +6,16 @@
 <h1> <%= @farm.name %> </h1>
 <p><%= button_to "Alphabetical", "/farms/#{@farm.id}/crops", params: {alphabetical: true}, method: :get %></p>
 
+<%= form_with url: "/farms/#{@farm.id}/crops", method: :get, local: true do |form| %>
+  <p>
+    <%= form.label :yield_threshold %>
+    <%= form.number_field :yield_threshold %>
+  </p>
+  <p>
+    <%= form.submit  "Only show crops with more than above bushels of yield"  %>
+  </p>
+<% end %>
+
 <% @crops.each do |crop| %>
   <h3><%= crop.name %></h3>
   <p>Yield: <%= crop.yield %> bushels</p>
