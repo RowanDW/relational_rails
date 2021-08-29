@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Ranches cows index' do
   before(:each) do
     @ranch_1 = Ranch.create!(name: "Fernando's Fine Bovines", max_capacity: 50, certified_humane: true)
-    @cow_1 = @ranch_1.cows.create!(name: "Bessie Lou", age: 2, grass_fed: true)
     @cow_2 = @ranch_1.cows.create!(name: "Bobbie Jean", age: 4, grass_fed: true)
+    @cow_1 = @ranch_1.cows.create!(name: "Bessie Lou", age: 2, grass_fed: true)
 
     @ranch_2 = Ranch.create!(name: "Janie's Jolly Cow Corral", max_capacity: 80, certified_humane: false)
     @cow_3 = @ranch_2.cows.create!(name: "Spotty Sue", age: 3, grass_fed: false)
@@ -61,4 +61,20 @@ RSpec.describe 'Ranches cows index' do
     click_on "Ranches Index"
     expect(current_path).to eq("/ranches")
   end
+
+  it 'has a link to sort the cows' do
+    visit "/ranches/#{@ranch_1.id}/cows"
+    expect("Bobbie Jean").to appear_before("Bessie Lou")
+
+    click_on("Sort Cows")
+
+    expect(current_path).to eq("/ranches/#{@ranch_1.id}/cows")
+    expect("Bessie Lou").to appear_before("Bobbie Jean")
+  end
 end
+
+# As a visitor
+# When I visit the Parent's children Index Page
+# Then I see a link to sort children in alphabetical order
+# When I click on the link
+# I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order

@@ -1,6 +1,8 @@
 class RanchCowsController < ApplicationController
   def index
     @ranch = Ranch.find(params[:ranch_id])
+    @cows = @ranch.cows
+    @cows = @ranch.cows.sort_by_name if params[:sorted] == "true"
   end
 
   def new
