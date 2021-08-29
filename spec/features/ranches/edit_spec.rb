@@ -14,6 +14,7 @@ require 'rails_helper'
 RSpec.describe 'Ranch editing' do
   before(:each) do
     @ranch_1 = Ranch.create!(name: "Fernando's Fine Bovines", max_capacity: 50, certified_humane: true)
+    @ranch_2 = Ranch.create!(name: "Janie's Jolly Cow Corral", max_capacity: 80, certified_humane: false)
   end
 
   it 'links to the edit page' do
@@ -39,5 +40,22 @@ RSpec.describe 'Ranch editing' do
 
     expect(current_path).to eq("/ranches/#{@ranch_1.id}")
     expect(page).to have_content("Fernando's Fabulous Bovines")
+  end
+
+#   As a visitor
+# When I visit the parent index page
+# Next to every parent, I see a link to edit that parent's info
+# When I click the link
+# I should be taken to that parents edit page where I can update its information just like in User Story 4
+
+  it 'is linked from the ranch index page' do
+    visit "/ranches/"
+
+    click_button("Edit Fernando's Fine Bovines")
+    expect(current_path).to eq("/ranches/#{@ranch_1.id}/edit")
+
+    visit "/ranches/"
+    click_button("Edit Janie's Jolly Cow Corral")
+    expect(current_path).to eq("/ranches/#{@ranch_2.id}/edit")
   end
 end
