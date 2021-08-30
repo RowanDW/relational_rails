@@ -1,7 +1,7 @@
 <h1>All Crops</h1>
 
 <% @crops.each do |crop| %>
-  <h3><%= crop.name %></h3>
+  <h3><%= link_to "#{crop.name}", "/crops/#{crop.id}" %></h3>
   <p>Yield: <%= crop.yield %> bushels</p>
   <p>Annual?: <%= crop.annual %></p>
   <p>Farm ID: <%= crop.farm_id %></p>
@@ -10,5 +10,4 @@
   <p>ID: <%= crop.id %></p>
   <p><%= button_to "Edit #{crop.name}", "/crops/#{crop.id}/edit", method: :get %></p>
   <p><%= button_to "Delete #{crop.name}", "/crops/#{crop.id}", method: :delete %></p>
-
 <% end %>

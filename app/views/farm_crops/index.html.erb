@@ -12,7 +12,7 @@
 <% end %>
 
 <% @crops.each do |crop| %>
-  <h3><%= crop.name %></h3>
+  <h3><%= link_to "#{crop.name}", "/crops/#{crop.id}" %></h3>
   <p>Yield: <%= crop.yield %> bushels</p>
   <p>Annual?: <%= crop.annual %></p>
   <p>Farm ID: <%= crop.farm_id %></p>

@@ -110,4 +110,15 @@ RSpec.describe 'displays name of each crop in database' do
     expect(page).to have_content("Peaches")
     expect(page).to_not have_content("Cabbage")
   end
+
+  it "can link each crop to its show page" do
+    visit "/farms/#{@farm.id}/crops"
+
+    expect(page).to have_link("Tomatoes")
+    expect(page).to have_link("Peaches")
+
+    click_link "Tomatoes"
+
+    expect(current_path).to eq("/crops/#{@crop1.id}")
+  end
 end
