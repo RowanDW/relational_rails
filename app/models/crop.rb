@@ -4,4 +4,12 @@ class Crop < ApplicationRecord
   def self.only_annuals
     Crop.where(annual: true)
   end
+
+  def self.alphabatize_crops
+    Crop.order(Arel.sql('LOWER(name)'))
+  end
+
+  def self.yield_threshold(num)
+    Crop.where("yield > #{num}")
+  end
 end

@@ -24,10 +24,10 @@ RSpec.describe Cow do
         expect(Cow.sort_by_name).to eq([@cow_1, @cow_2, @cow_3])
       end
 
-      # it 'is case insensitive' do
-      #   cow_4 = @ranch_2.cows.create!(name: "amy anne", age: 5, grass_fed: false)
-      #   expect(Cow.sort).to eq([cow_4, @cow_1, @cow_2, @cow_3])
-      # end
+      it 'is case insensitive' do
+        cow_4 = @ranch_2.cows.create!(name: "amy anne", age: 5, grass_fed: false)
+        expect(Cow.sort_by_name).to eq([cow_4, @cow_1, @cow_2, @cow_3])
+      end
     end
 
     describe '.older_than(age_threshold)' do

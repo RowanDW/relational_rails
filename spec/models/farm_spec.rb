@@ -12,25 +12,12 @@ RSpec.describe Farm do
       @crop2 = @farm2.crops.create!(name: 'Beans', yield: 65, annual: true)
       @crop3 = @farm1.crops.create!(name: 'Peaches', yield: 25, annual: false)
     end
+    
     describe '#crops_count' do
       it 'counts the number of crops a farm has' do
         expect(@farm1.crops_count).to eq(2)
         expect(@farm2.crops_count).to eq(1)
         expect(@farm3.crops_count).to eq(0)
-      end
-    end
-
-    describe '#alphabatize_crops' do
-      it "can put order crops alphabetically" do
-        expect(@farm1.alphabatize_crops).to eq([@crop3, @crop1])
-      end
-    end
-
-    describe '#yield_threshold' do
-      it "can filter out crops under inputted num" do
-        crop4 = @farm1.crops.create!(name: 'Cabbage', yield: 12, annual: true)
-
-        expect(@farm1.yield_threshold(20)).to eq([@crop1, @crop3])
       end
     end
   end
