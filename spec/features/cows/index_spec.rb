@@ -60,6 +60,18 @@ RSpec.describe '#the cows index page' do
     expect(page).to have_content("Updated at: #{@cow_2.updated_at}")
   end
 
+  it 'links to each cows show page' do
+    visit '/cows'
+
+    click_on("Bessie Lou")
+    expect(current_path).to eq("/cows/#{@cow_1.id}")
+
+    visit '/cows'
+
+    click_on("Bobbie Jean")
+    expect(current_path).to eq("/cows/#{@cow_2.id}")
+  end
+
   it 'only shows grass_fed cows' do
     visit '/cows'
 

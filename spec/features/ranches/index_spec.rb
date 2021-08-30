@@ -60,6 +60,18 @@ RSpec.describe 'Ranches index' do
     expect(page).to have_content(@ranch_2.created_at)
   end
 
+  it 'links to each ranch show page' do
+    visit "/ranches"
+
+    click_on("Fernando's Fine Bovines")
+    expect(current_path).to eq("/ranches/#{@ranch_1.id}")
+
+    visit "/ranches"
+
+    click_on("Janie's Jolly Cow Corral")
+    expect(current_path).to eq("/ranches/#{@ranch_2.id}")
+  end
+
   it 'can delete any ranch and its cows' do
     visit "/ranches"
 
