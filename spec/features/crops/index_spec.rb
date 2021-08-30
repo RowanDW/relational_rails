@@ -63,36 +63,6 @@ RSpec.describe 'the crops index page' do
     expect(page).to have_content(@crop2.id)
   end
 
-  it 'links to all child indexes' do
-    visit '/crops'
-
-    expect(page).to have_content("Crops Index")
-    expect(page).to have_content("Cows Index")
-
-    click_on "Crops Index"
-    expect(current_path).to eq("/crops")
-
-    visit '/crops'
-
-    click_on "Cows Index"
-    expect(current_path).to eq("/cows")
-  end
-
-  it 'links to all parent indexes' do
-    visit '/crops'
-
-    expect(page).to have_content("Farms Index")
-    expect(page).to have_content("Ranches Index")
-
-    click_on "Farms Index"
-    expect(current_path).to eq("/farms")
-
-    visit '/crops'
-
-    click_on "Ranches Index"
-    expect(current_path).to eq("/ranches")
-  end
-
   it 'only shows crops that where annual is true' do
     visit '/crops'
 
@@ -126,5 +96,16 @@ RSpec.describe 'the crops index page' do
     expect(current_path).to eq("/crops")
 
     expect(page).to_not have_content("Tomatoes")
+  end
+
+  it "can link each crop to its show page" do
+    visit '/crops'
+
+    expect(page).to have_link("Tomatoes")
+    expect(page).to have_link("Beans")
+
+    click_link "Tomatoes"
+
+    expect(current_path).to eq("/crops/#{@crop1.id}")
   end
 end

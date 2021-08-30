@@ -83,4 +83,15 @@ RSpec.describe 'the farm index page' do
     expect(current_path).to eq('/farms')
     expect(page).to_not have_content("Schrute Farms")
   end
+
+  it "can link each crop to its show page" do
+    visit "/farms"
+
+    expect(page).to have_link("Schrute Farms")
+    expect(page).to have_link( "Old MacDonald's")
+
+    click_link "Schrute Farms"
+
+    expect(current_path).to eq("/farms/#{@farm1.id}")
+  end
 end
