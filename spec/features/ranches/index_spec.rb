@@ -10,26 +10,6 @@ RSpec.describe 'Ranches index' do
     @cow_3 = @ranch_2.cows.create!(name: "Spotty Sue", age: 3, grass_fed: false)
   end
 
-  it 'displays the name of each ranch' do
-    visit "/ranches"
-
-    expect(page).to have_content("Fernando's Fine Bovines")
-    expect(page).to have_content("Janie's Jolly Cow Corral")
-  end
-
-  it 'orders by most recently created' do
-    visit "/ranches"
-
-    expect("Janie's Jolly Cow Corral").to appear_before("Fernando's Fine Bovines")
-  end
-
-  it 'displays created_at next to each record' do
-    visit "/ranches"
-
-    expect(page).to have_content(@ranch_1.created_at)
-    expect(page).to have_content(@ranch_2.created_at)
-  end
-
   it 'links to all child indexes' do
     visit "/ranches"
 
@@ -58,6 +38,26 @@ RSpec.describe 'Ranches index' do
 
     click_on "Ranches Index"
     expect(current_path).to eq("/ranches")
+  end
+
+  it 'displays the name of each ranch' do
+    visit "/ranches"
+
+    expect(page).to have_content("Fernando's Fine Bovines")
+    expect(page).to have_content("Janie's Jolly Cow Corral")
+  end
+
+  it 'orders by most recently created' do
+    visit "/ranches"
+
+    expect("Janie's Jolly Cow Corral").to appear_before("Fernando's Fine Bovines")
+  end
+
+  it 'displays created_at next to each record' do
+    visit "/ranches"
+
+    expect(page).to have_content(@ranch_1.created_at)
+    expect(page).to have_content(@ranch_2.created_at)
   end
 
   it 'can delete any ranch and its cows' do

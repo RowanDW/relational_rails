@@ -10,26 +10,6 @@ RSpec.describe '#the cows index page' do
     @cow_3 = @ranch_2.cows.create!(name: "Spotty Sue", age: 3, grass_fed: false)
   end
 
-  it 'displays all cows with their attributes' do
-    visit '/cows'
-
-    expect(page).to have_content("Bessie Lou")
-    expect(page).to have_content("Bobbie Jean")
-
-    expect(page).to have_content("Age: 2")
-    expect(page).to have_content("Age: 4")
-
-    expect(page).to have_content("Grass fed?: true")
-
-    expect(page).to have_content("Ranch id: #{@ranch_1.id}")
-
-    expect(page).to have_content("Created at: #{@cow_1.created_at}")
-    expect(page).to have_content("Created at: #{@cow_2.created_at}")
-
-    expect(page).to have_content("Updated at: #{@cow_1.updated_at}")
-    expect(page).to have_content("Updated at: #{@cow_2.updated_at}")
-  end
-
   it 'links to all child indexes' do
     visit '/cows'
 
@@ -59,6 +39,27 @@ RSpec.describe '#the cows index page' do
     click_on "Ranches Index"
     expect(current_path).to eq("/ranches")
   end
+
+  it 'displays all cows with their attributes' do
+    visit '/cows'
+
+    expect(page).to have_content("Bessie Lou")
+    expect(page).to have_content("Bobbie Jean")
+
+    expect(page).to have_content("Age: 2")
+    expect(page).to have_content("Age: 4")
+
+    expect(page).to have_content("Grass fed?: true")
+
+    expect(page).to have_content("Ranch id: #{@ranch_1.id}")
+
+    expect(page).to have_content("Created at: #{@cow_1.created_at}")
+    expect(page).to have_content("Created at: #{@cow_2.created_at}")
+
+    expect(page).to have_content("Updated at: #{@cow_1.updated_at}")
+    expect(page).to have_content("Updated at: #{@cow_2.updated_at}")
+  end
+
 
   # As a visitor
   # When I visit the child index

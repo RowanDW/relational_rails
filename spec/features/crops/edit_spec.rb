@@ -14,6 +14,36 @@ RSpec.describe 'edit farm crop page' do
     @crop = @farm.crops.create!(name: "Green Ben", yield: 40, annual: true)
   end
 
+  it 'links to all child indexes' do
+    visit "/crops/#{@crop.id}/edit"
+
+    expect(page).to have_content("Crops Index")
+    expect(page).to have_content("Cows Index")
+
+    click_on "Crops Index"
+    expect(current_path).to eq("/crops")
+
+    visit "/crops/#{@crop.id}/edit"
+
+    click_on "Cows Index"
+    expect(current_path).to eq("/cows")
+  end
+
+  it 'links to all parent indexes' do
+    visit "/crops/#{@crop.id}/edit"
+
+    expect(page).to have_content("Farms Index")
+    expect(page).to have_content("Ranches Index")
+
+    click_on "Farms Index"
+    expect(current_path).to eq("/farms")
+
+    visit "/crops/#{@crop.id}/edit"
+
+    click_on "Ranches Index"
+    expect(current_path).to eq("/ranches")
+  end
+
   it 'links from crop show to crop edit page' do
     visit "/crops/#{@crop.id}"
 

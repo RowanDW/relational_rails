@@ -10,28 +10,6 @@ RSpec.describe 'Ranches cows index' do
     @cow_3 = @ranch_2.cows.create!(name: "Spotty Sue", age: 3, grass_fed: false)
   end
 
-  it 'displays all cows for the artist with their attributes' do
-    visit "/ranches/#{@ranch_1.id}/cows"
-
-    expect(page).to have_content("Fernando's Fine Bovines")
-
-    expect(page).to have_content("Name: Bessie Lou")
-    expect(page).to have_content("Age: 2")
-    expect(page).to have_content("Grass fed?: true")
-    expect(page).to have_content("Ranch id: #{@ranch_1.id}")
-    expect(page).to have_content("Created at: #{@cow_1.created_at}")
-    expect(page).to have_content("Updated at: #{@cow_1.updated_at}")
-
-    expect(page).to have_content("Name: Bobbie Jean")
-    expect(page).to have_content("Age: 4")
-    expect(page).to have_content("Grass fed?: true")
-    expect(page).to have_content("Ranch id: #{@ranch_1.id}")
-    expect(page).to have_content("Created at: #{@cow_2.created_at}")
-    expect(page).to have_content("Updated at: #{@cow_2.updated_at}")
-
-    expect(page).to_not have_content("Spotty Sue")
-  end
-
   it 'links to all child indexes' do
     visit "/ranches/#{@ranch_1.id}/cows"
 
@@ -60,6 +38,28 @@ RSpec.describe 'Ranches cows index' do
 
     click_on "Ranches Index"
     expect(current_path).to eq("/ranches")
+  end
+
+  it 'displays all cows for the artist with their attributes' do
+    visit "/ranches/#{@ranch_1.id}/cows"
+
+    expect(page).to have_content("Fernando's Fine Bovines")
+
+    expect(page).to have_content("Name: Bessie Lou")
+    expect(page).to have_content("Age: 2")
+    expect(page).to have_content("Grass fed?: true")
+    expect(page).to have_content("Ranch id: #{@ranch_1.id}")
+    expect(page).to have_content("Created at: #{@cow_1.created_at}")
+    expect(page).to have_content("Updated at: #{@cow_1.updated_at}")
+
+    expect(page).to have_content("Name: Bobbie Jean")
+    expect(page).to have_content("Age: 4")
+    expect(page).to have_content("Grass fed?: true")
+    expect(page).to have_content("Ranch id: #{@ranch_1.id}")
+    expect(page).to have_content("Created at: #{@cow_2.created_at}")
+    expect(page).to have_content("Updated at: #{@cow_2.updated_at}")
+
+    expect(page).to_not have_content("Spotty Sue")
   end
 
   it 'has a link to sort the cows' do
