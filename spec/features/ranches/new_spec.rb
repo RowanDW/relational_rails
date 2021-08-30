@@ -1,17 +1,36 @@
-# As a visitor
-# When I visit the Parent Index page
-# Then I see a link to create a new Parent record, "New Parent"
-# When I click this link
-# Then I am taken to '/parents/new' where I  see a form for a new parent record
-# When I fill out the form with a new parent's attributes:
-# And I click the button "Create Parent" to submit the form
-# Then a `POST` request is sent to the '/parents' route,
-# a new parent record is created,
-# and I am redirected to the Parent Index page where I see the new Parent displayed.
-
 require 'rails_helper'
 
 RSpec.describe 'new Ranch creation' do
+  it 'links to all child indexes' do
+    visit "/ranches/new"
+
+    expect(page).to have_content("Crops Index")
+    expect(page).to have_content("Cows Index")
+
+    click_on "Crops Index"
+    expect(current_path).to eq("/crops")
+
+    visit "/ranches/new"
+
+    click_on "Cows Index"
+    expect(current_path).to eq("/cows")
+  end
+
+  it 'links to all parent indexes' do
+    visit "/ranches/new"
+
+    expect(page).to have_content("Farms Index")
+    expect(page).to have_content("Ranches Index")
+
+    click_on "Farms Index"
+    expect(current_path).to eq("/farms")
+
+    visit "/ranches/new"
+
+    click_on "Ranches Index"
+    expect(current_path).to eq("/ranches")
+  end
+
   it 'displays a link to make a new ranch' do
     visit "/ranches"
 

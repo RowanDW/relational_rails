@@ -9,33 +9,6 @@ RSpec.describe 'displays name of each crop in database' do
     @crop3 = @farm.crops.create!(name: 'Peaches', yield: 25, annual: false)
   end
 
-  it 'displays the attributes of each crop of the farm' do
-    visit "/farms/#{@farm.id}/crops"
-
-    expect(page).to have_content(@crop1.name)
-    expect(page).to have_content(@crop3.name)
-
-    expect(page).to have_content(@crop1.yield)
-    expect(page).to have_content(@crop3.yield)
-
-    expect(page).to have_content(@crop1.annual)
-    expect(page).to have_content(@crop3.annual)
-
-    expect(page).to have_content(@crop1.farm_id)
-    expect(page).to have_content(@crop3.farm_id)
-#
-    expect(page).to have_content(@crop1.updated_at)
-    expect(page).to have_content(@crop3.updated_at)
-
-    expect(page).to have_content(@crop1.created_at)
-    expect(page).to have_content(@crop3.created_at)
-
-    expect(page).to have_content(@crop1.id)
-    expect(page).to have_content(@crop3.id)
-
-    expect(page).to_not have_content(@crop2.name)
-  end
-
   it 'links to all child indexes' do
     visit "/farms/#{@farm.id}/crops"
 
@@ -66,6 +39,33 @@ RSpec.describe 'displays name of each crop in database' do
     expect(current_path).to eq("/ranches")
   end
 
+  it 'displays the attributes of each crop of the farm' do
+    visit "/farms/#{@farm.id}/crops"
+
+    expect(page).to have_content(@crop1.name)
+    expect(page).to have_content(@crop3.name)
+
+    expect(page).to have_content(@crop1.yield)
+    expect(page).to have_content(@crop3.yield)
+
+    expect(page).to have_content(@crop1.annual)
+    expect(page).to have_content(@crop3.annual)
+
+    expect(page).to have_content(@crop1.farm_id)
+    expect(page).to have_content(@crop3.farm_id)
+
+    expect(page).to have_content(@crop1.updated_at)
+    expect(page).to have_content(@crop3.updated_at)
+
+    expect(page).to have_content(@crop1.created_at)
+    expect(page).to have_content(@crop3.created_at)
+
+    expect(page).to have_content(@crop1.id)
+    expect(page).to have_content(@crop3.id)
+
+    expect(page).to_not have_content(@crop2.name)
+  end
+
   it 'can link each crop to its edit page' do
     visit "/farms/#{@farm.id}/crops"
 
@@ -94,7 +94,6 @@ RSpec.describe 'displays name of each crop in database' do
   end
 
   it "can submit a form that filters results" do
-
     crop4 = @farm.crops.create!(name: 'Cabbage', yield: 12, annual: true)
 
     visit "/farms/#{@farm.id}/crops"

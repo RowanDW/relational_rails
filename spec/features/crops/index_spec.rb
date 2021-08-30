@@ -8,6 +8,36 @@ RSpec.describe 'the crops index page' do
     @crop3 = @farm.crops.create!(name: 'Apples', yield: 22, annual: false)
   end
 
+  it 'links to all child indexes' do
+    visit "/crops"
+
+    expect(page).to have_content("Crops Index")
+    expect(page).to have_content("Cows Index")
+
+    click_on "Crops Index"
+    expect(current_path).to eq("/crops")
+
+    visit "/crops"
+
+    click_on "Cows Index"
+    expect(current_path).to eq("/cows")
+  end
+
+  it 'links to all parent indexes' do
+    visit "/crops"
+
+    expect(page).to have_content("Farms Index")
+    expect(page).to have_content("Ranches Index")
+
+    click_on "Farms Index"
+    expect(current_path).to eq("/farms")
+
+    visit "/crops"
+
+    click_on "Ranches Index"
+    expect(current_path).to eq("/ranches")
+  end
+
   it 'displays the attributes of each crop' do
     visit '/crops'
 
@@ -97,5 +127,4 @@ RSpec.describe 'the crops index page' do
 
     expect(page).to_not have_content("Tomatoes")
   end
-
 end

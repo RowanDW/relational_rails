@@ -7,26 +7,6 @@ RSpec.describe 'the farm index page' do
     @farm2 = Farm.create!(name: "Old MacDonald's", acres: 100, organic: false)
   end
 
-  it 'displays the name of each farm' do
-    visit '/farms'
-
-    expect(page).to have_content(@farm1.name)
-    expect(page).to have_content(@farm2.name)
-  end
-
-  it 'is ordered by most recently created' do
-    visit '/farms'
-
-    expect("Old MacDonald's").to appear_before("Schrute Farms")
-  end
-
-  it 'shows the creation time next to each record' do
-    visit '/farms'
-
-    expect(page).to have_content(@farm1.created_at)
-    expect(page).to have_content(@farm2.created_at)
-  end
-
   it 'links to all child indexes' do
     visit '/farms'
 
@@ -55,6 +35,26 @@ RSpec.describe 'the farm index page' do
 
     click_on "Ranches Index"
     expect(current_path).to eq("/ranches")
+  end
+
+  it 'displays the name of each farm' do
+    visit '/farms'
+
+    expect(page).to have_content(@farm1.name)
+    expect(page).to have_content(@farm2.name)
+  end
+
+  it 'is ordered by most recently created' do
+    visit '/farms'
+
+    expect("Old MacDonald's").to appear_before("Schrute Farms")
+  end
+
+  it 'shows the creation time next to each record' do
+    visit '/farms'
+
+    expect(page).to have_content(@farm1.created_at)
+    expect(page).to have_content(@farm2.created_at)
   end
 
   it 'can link each parent to its edit page' do

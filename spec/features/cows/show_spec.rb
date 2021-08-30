@@ -7,6 +7,36 @@ RSpec.describe 'the cows show page' do
     @cow_2 = @ranch_1.cows.create!(name: "Bobbie Jean", age: 4, grass_fed: true)
   end
 
+  it 'links to all child indexes' do
+    visit "/cows/#{@cow_1.id}"
+
+    expect(page).to have_content("Crops Index")
+    expect(page).to have_content("Cows Index")
+
+    click_on "Crops Index"
+    expect(current_path).to eq("/crops")
+
+    visit "/cows/#{@cow_1.id}"
+
+    click_on "Cows Index"
+    expect(current_path).to eq("/cows")
+  end
+
+  it 'links to all parent indexes' do
+    visit "/cows/#{@cow_1.id}"
+
+    expect(page).to have_content("Farms Index")
+    expect(page).to have_content("Ranches Index")
+
+    click_on "Farms Index"
+    expect(current_path).to eq("/farms")
+
+    visit "/cows/#{@cow_1.id}"
+
+    click_on "Ranches Index"
+    expect(current_path).to eq("/ranches")
+  end
+
   it 'displays the cow and its attributes' do
     visit "/cows/#{@cow_1.id}"
 
@@ -58,11 +88,3 @@ RSpec.describe 'the cows show page' do
     expect(page).to_not have_content("Bessie Lou")
   end
 end
-
-# As a visitor
-# When I visit a child show page
-# Then I see a link to delete the child "Delete Child"
-# When I click the link
-# Then a 'DELETE' request is sent to '/child_table_name/:id',
-# the child is deleted,
-# and I am redirected to the child index page where I no longer see this child

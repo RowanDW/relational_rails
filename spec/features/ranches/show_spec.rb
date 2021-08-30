@@ -10,26 +10,6 @@ RSpec.describe 'the ranches show page' do
     @cow_3 = @ranch_2.cows.create!(name: "Spotty Sue", age: 3, grass_fed: false)
   end
 
-  it 'displays the ranch and its attributes' do
-    visit "/ranches/#{@ranch_1.id}"
-
-
-    expect(page).to have_content("Fernando's Fine Bovines")
-    expect(page).to have_content("Id: #{@ranch_1.id}")
-    expect(page).to have_content("Max Capacity: 50")
-    expect(page).to have_content("Certified Humane: true")
-    expect(page).to have_content("Created at: #{@ranch_1.created_at}")
-    expect(page).to have_content("Updated at: #{@ranch_1.updated_at}")
-
-    expect(page).to_not have_content("Janie's Jolly Cow Corral")
-  end
-
-  it 'displays a count of children associated with this parent' do
-    visit "/ranches/#{@ranch_1.id}"
-
-    expect(page).to have_content("Number of Cows: 2")
-  end
-
   it 'links to all child indexes' do
     visit "/ranches/#{@ranch_1.id}"
 
@@ -58,6 +38,25 @@ RSpec.describe 'the ranches show page' do
 
     click_on "Ranches Index"
     expect(current_path).to eq("/ranches")
+  end
+
+  it 'displays the ranch and its attributes' do
+    visit "/ranches/#{@ranch_1.id}"
+
+    expect(page).to have_content("Fernando's Fine Bovines")
+    expect(page).to have_content("Id: #{@ranch_1.id}")
+    expect(page).to have_content("Max Capacity: 50")
+    expect(page).to have_content("Certified Humane: true")
+    expect(page).to have_content("Created at: #{@ranch_1.created_at}")
+    expect(page).to have_content("Updated at: #{@ranch_1.updated_at}")
+
+    expect(page).to_not have_content("Janie's Jolly Cow Corral")
+  end
+
+  it 'displays a count of children associated with this parent' do
+    visit "/ranches/#{@ranch_1.id}"
+
+    expect(page).to have_content("Number of Cows: 2")
   end
 
   it 'links to ranch cows index page' do

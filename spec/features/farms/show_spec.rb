@@ -1,8 +1,5 @@
 require 'rails_helper'
 
-# As a visitor When I visit a parent's show page I see a count of the number
-# of children associated with this parent
-
 RSpec.describe 'the farms show page' do
 
   before :each do
@@ -12,34 +9,6 @@ RSpec.describe 'the farms show page' do
     @crop1 = @farm1.crops.create!(name: 'Tomatoes', yield: 30, annual: true)
     @crop2 = @farm2.crops.create!(name: 'Beans', yield: 65, annual: true)
     @crop3 = @farm1.crops.create!(name: 'Peaches', yield: 25, annual: false)
-  end
-
-  it 'can see all the attributes of the farm' do
-
-    visit "/farms/#{@farm1.id}"
-
-    expect(page).to have_content(@farm1.name)
-    expect(page).to have_content(@farm1.acres)
-    expect(page).to have_content(@farm1.organic)
-    expect(page).to have_content(@farm1.updated_at)
-    expect(page).to have_content(@farm1.created_at)
-    expect(page).to have_content(@farm1.id)
-
-    expect(page).to_not have_content(@farm2.name)
-  end
-
-  it 'can see the child crops count of the farm' do
-    visit "/farms/#{@farm1.id}"
-
-    expect(page).to have_content("Number of Crops: 2")
-
-    visit "/farms/#{@farm2.id}"
-
-    expect(page).to have_content("Number of Crops: 1")
-
-    visit "/farms/#{@farm3.id}"
-
-    expect(page).to have_content("Number of Crops: 0")
   end
 
   it 'links to all child indexes' do
@@ -70,6 +39,34 @@ RSpec.describe 'the farms show page' do
 
     click_on "Ranches Index"
     expect(current_path).to eq("/ranches")
+  end
+
+  it 'can see all the attributes of the farm' do
+
+    visit "/farms/#{@farm1.id}"
+
+    expect(page).to have_content(@farm1.name)
+    expect(page).to have_content(@farm1.acres)
+    expect(page).to have_content(@farm1.organic)
+    expect(page).to have_content(@farm1.updated_at)
+    expect(page).to have_content(@farm1.created_at)
+    expect(page).to have_content(@farm1.id)
+
+    expect(page).to_not have_content(@farm2.name)
+  end
+
+  it 'can see the child crops count of the farm' do
+    visit "/farms/#{@farm1.id}"
+
+    expect(page).to have_content("Number of Crops: 2")
+
+    visit "/farms/#{@farm2.id}"
+
+    expect(page).to have_content("Number of Crops: 1")
+
+    visit "/farms/#{@farm3.id}"
+
+    expect(page).to have_content("Number of Crops: 0")
   end
 
   it 'links to farm crops index page' do
