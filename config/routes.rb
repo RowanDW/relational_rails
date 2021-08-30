@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get    '/ranches/:id',          to: 'ranches#show'
   get    '/ranches/:id/cows',     to: 'ranch_cows#index'
   get    '/ranches/:id/cows/new', to: 'ranch_cows#new'
-  post   '/ranches/:id/cows',      to: 'ranch_cows#create'
+  post   '/ranches/:id/cows',     to: 'ranch_cows#create'
   post   '/ranches',              to: 'ranches#create'
   get    '/ranches/:id/edit',     to: 'ranches#edit'
   patch  '/ranches/:id',          to: 'ranches#update'

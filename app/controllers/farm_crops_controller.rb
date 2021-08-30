@@ -4,11 +4,11 @@ class FarmCropsController < ApplicationController
     @farm = Farm.find(params[:id])
 
     if params[:alphabetical] == 'true'
-      @crops = @farm.alphabatize_crops
-    elsif !params[:yield_threshold].nil?
-      @crops = @farm.yield_threshold(params[:yield_threshold])
-    else
+      @crops = @farm.crops.alphabatize_crops
+    elsif params[:yield_threshold].nil?
       @crops = @farm.crops
+    else
+      @crops = @farm.crops.yield_threshold(params[:yield_threshold])
     end
   end
 
