@@ -1,14 +1,3 @@
-# As a visitor
-# When I visit a parent show page
-# Then I see a link to update the parent "Update Parent"
-# When I click the link "Update Parent"
-# Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:
-# When I fill out the form with updated information
-# And I click the button to submit the form
-# Then a `PATCH` request is sent to '/parents/:id',
-# the parent's info is updated,
-# and I am redirected to the Parent's Show page where I see the parent's updated info
-
 require 'rails_helper'
 
 RSpec.describe 'Ranch editing' do
@@ -71,12 +60,6 @@ RSpec.describe 'Ranch editing' do
     expect(current_path).to eq("/ranches/#{@ranch_1.id}")
     expect(page).to have_content("Fernando's Fabulous Bovines")
   end
-
-#   As a visitor
-# When I visit the parent index page
-# Next to every parent, I see a link to edit that parent's info
-# When I click the link
-# I should be taken to that parents edit page where I can update its information just like in User Story 4
 
   it 'is linked from the ranch index page' do
     visit "/ranches/"

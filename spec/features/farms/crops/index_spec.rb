@@ -53,7 +53,7 @@ RSpec.describe 'displays name of each crop in database' do
 
     expect(page).to have_content(@crop1.farm_id)
     expect(page).to have_content(@crop3.farm_id)
-#
+
     expect(page).to have_content(@crop1.updated_at)
     expect(page).to have_content(@crop3.updated_at)
 
@@ -94,7 +94,6 @@ RSpec.describe 'displays name of each crop in database' do
   end
 
   it "can submit a form that filters results" do
-
     crop4 = @farm.crops.create!(name: 'Cabbage', yield: 12, annual: true)
 
     visit "/farms/#{@farm.id}/crops"

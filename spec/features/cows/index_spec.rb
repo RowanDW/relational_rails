@@ -60,10 +60,6 @@ RSpec.describe '#the cows index page' do
     expect(page).to have_content("Updated at: #{@cow_2.updated_at}")
   end
 
-
-  # As a visitor
-  # When I visit the child index
-  # Then I only see records where the boolean column is `true`
   it 'only shows grass_fed cows' do
     visit '/cows'
 

@@ -127,5 +127,4 @@ RSpec.describe 'the crops index page' do
 
     expect(page).to_not have_content("Tomatoes")
   end
-
 end

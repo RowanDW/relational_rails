@@ -1,8 +1,5 @@
 require 'rails_helper'
 
-# As a visitor When I visit a parent's show page I see a count of the number
-# of children associated with this parent
-
 RSpec.describe 'the farms show page' do
 
   before :each do

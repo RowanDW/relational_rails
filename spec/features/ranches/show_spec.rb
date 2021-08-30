@@ -43,7 +43,6 @@ RSpec.describe 'the ranches show page' do
   it 'displays the ranch and its attributes' do
     visit "/ranches/#{@ranch_1.id}"
 
-
     expect(page).to have_content("Fernando's Fine Bovines")
     expect(page).to have_content("Id: #{@ranch_1.id}")
     expect(page).to have_content("Max Capacity: 50")

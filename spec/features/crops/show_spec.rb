@@ -50,5 +50,4 @@ RSpec.describe 'the crops show page' do
 
     expect(page).to_not have_content(@crop2.name)
   end
-
 end
