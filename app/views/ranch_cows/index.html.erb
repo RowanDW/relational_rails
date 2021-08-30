@@ -1,7 +1,7 @@
 <h1><%= @ranch.name %></h1>
 
 <% @cows.each do |cow| %>
-  <h1>Name: <%= cow.name %></h1>
+  <h1>Name: <%= link_to "#{cow.name}", "/cows/#{cow.id}" %></h1>
   <p>Age: <%= cow.age %></p>
   <p>Grass fed?: <%= cow.grass_fed %></p>
   <p>Ranch id: <%= cow.ranch_id %></p>

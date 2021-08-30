@@ -62,6 +62,18 @@ RSpec.describe 'Ranches cows index' do
     expect(page).to_not have_content("Spotty Sue")
   end
 
+  it 'links to each ranch_cows show page' do
+    visit "/ranches/#{@ranch_1.id}/cows"
+
+    click_on("Bessie Lou")
+    expect(current_path).to eq("/cows/#{@cow_1.id}")
+
+    visit "/ranches/#{@ranch_1.id}/cows"
+
+    click_on("Bobbie Jean")
+    expect(current_path).to eq("/cows/#{@cow_2.id}")
+  end
+
   it 'has a link to sort the cows' do
     visit "/ranches/#{@ranch_1.id}/cows"
     expect("Bobbie Jean").to appear_before("Bessie Lou")
