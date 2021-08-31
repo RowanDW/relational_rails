@@ -94,4 +94,29 @@ RSpec.describe 'the farm index page' do
 
     expect(current_path).to eq("/farms/#{@farm1.id}")
   end
+
+  it "can click a button to sort farms by crop count" do
+    farm3 = Farm.create!(name: "Farmy Farm", acres: 100, organic: false)
+    crop1 = @farm1.crops.create!(name: 'Tomatoes', yield: 30, annual: true)
+    crop2 = @farm2.crops.create!(name: 'Beans', yield: 65, annual: true)
+    crop3 = @farm2.crops.create!(name: 'Apples', yield: 22, annual: false)
+
+    visit '/farms'
+
+    expect("Farmy Farm").to appear_before("Old MacDonald's")
+    expect("Old MacDonald's").to appear_before("Schrute Farms")
+    expect(page).to have_button("Sort by crop count")
+
+    click_button "Sort by crop count"
+
+    expect(current_path).to eq('/farms')
+
+    expect("Old MacDonald's").to appear_before("Schrute Farms")
+    expect("Schrute Farms").to appear_before("Farmy Farm")
+
+    expect(page).to have_content("Schrute Farms - Crop Count: 1")
+    expect(page).to have_content("Old MacDonald's - Crop Count: 2")
+    expect(page).to have_content("Farmy Farm - Crop Count: 0")
+
+  end
 end

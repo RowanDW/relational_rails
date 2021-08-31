@@ -1,7 +1,8 @@
 <h1> Welcome to Farms </h1>
+<p><%= button_to "Sort by crop count", "/farms", params: {crop_sort: true}, method: :get %></p>
 
 <% @farms.each do |farm| %>
-  <h3><%= link_to "#{farm.name}", "/farms/#{farm.id}" %></h3>
+  <h3><%= link_to "#{farm.name}", "/farms/#{farm.id}" %><%= " - Crop Count: #{farm.crops_count}" if params[:crop_sort] == 'true' %></h3>
   <p>Created at: <%= farm.created_at %></p>
   <p><%= button_to "Edit #{farm.name}", "/farms/#{farm.id}/edit", method: :get %></p>
   <p><%= button_to "Delete #{farm.name}", "/farms/#{farm.id}", method: :delete %></p>

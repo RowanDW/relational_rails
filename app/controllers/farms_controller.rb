@@ -1,7 +1,11 @@
 class FarmsController < ApplicationController
 
   def index
-    @farms = Farm.order_created_at_desc
+    if params[:crop_sort] == 'true'
+      @farms = Farm.order_crop_count
+    else
+      @farms = Farm.order_created_at_desc
+    end
   end
 
   def show
