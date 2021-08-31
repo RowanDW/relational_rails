@@ -1,6 +1,7 @@
 class FarmsController < ApplicationController
 
   def index
+    if params[:]
     @farms = Farm.order_created_at_desc
   end
 

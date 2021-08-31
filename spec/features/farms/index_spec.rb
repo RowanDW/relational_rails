@@ -94,4 +94,28 @@ RSpec.describe 'the farm index page' do
 
     expect(current_path).to eq("/farms/#{@farm1.id}")
   end
+
+  it "can search by name (exact match)" do
+    farm3 = Farm.create!(name: "Farmy Farm", acres: 100, organic: false)
+
+    visit '/farms'
+
+    expect(page).to have_button("Exact name search")
+
+    fill_in 'exact_search', with: "Schrute Farms"
+    click_button "Exact name search"
+
+    expect(current_path).to eq('/farms')
+
+    expect(page).to have_content("Schrute Farms")
+    expect(page).to_not have_content("Old MacDonald's")
+    expect(page).to_not have_content("Farmy Farm")
+
+    fill_in 'exact_search', with: "Something Farm"
+    click_button "Exact name search"
+
+    expect(page).to_not have_content("Schrute Farms")
+    expect(page).to_not have_content("Old MacDonald's")
+    expect(page).to_not have_content("Farmy Farm")
+  end
 end
