@@ -1,6 +1,11 @@
 class RanchesController < ApplicationController
   def index
     @ranches = Ranch.order_created_at_desc
+    if params[:sort_by_num] == "true"
+      @ranches = Ranch.sort_by_num
+    else
+      @ranches = Ranch.order_created_at_desc
+    end
   end
 
   def show

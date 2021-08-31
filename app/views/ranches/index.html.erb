@@ -2,8 +2,10 @@
 <% @ranches.each do |ranch| %>
   <h3><%= link_to "#{ranch.name}", "/ranches/#{ranch.id}" %></h3>
   <p>Created at: <%= ranch.created_at %></p>
+  <%= "Cow count: #{ranch.cows.count}" if params[:sort_by_num] == "true" %>
   <%= button_to "Edit #{ranch.name}", "/ranches/#{ranch.id}/edit", method: :get %>
   <%= button_to "Delete #{ranch.name}", "/ranches/#{ranch.id}", method: :delete %>
 <% end %>
 
 <%= link_to "New Ranch", "ranches/new" %>
+<%= link_to "Sort By Number Of Cows", "/ranches?sort_by_num=true" %>
