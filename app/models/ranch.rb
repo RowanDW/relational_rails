@@ -10,7 +10,7 @@ class Ranch < ApplicationRecord
   end
 
   def self.sort_by_num
-    joins(:cows).
+    left_joins(:cows).
     group(:id).
     order("cows.count DESC")
   end
