@@ -8,4 +8,10 @@ class Ranch < ApplicationRecord
   def self.order_created_at_desc
     order(created_at: :desc)
   end
+
+  def self.sort_by_num
+    joins(:cows).
+    group(:id).
+    order("cows.count DESC")
+  end
 end

@@ -88,4 +88,26 @@ RSpec.describe 'Ranches index' do
     expect(page).to_not have_content("Bobbie Jean")
     expect(page).to_not have_content("Spotty Sue")
   end
+
+  it 'can sort ranches by number of cows per ranch' do
+    ranch_3 = Ranch.create!(name: "Big Bobby's Bovine Bonanza", max_capacity: 70, certified_humane: false)
+    cow_4 = ranch_3.cows.create!(name: "John", age: 1, grass_fed: false)
+    cow_5 = ranch_3.cows.create!(name: "Paul", age: 2, grass_fed: false)
+    cow_6 = ranch_3.cows.create!(name: "George", age: 3, grass_fed: false)
+    cow_7 = ranch_3.cows.create!(name: "Ringo", age: 4, grass_fed: false)
+
+    visit "/ranches"
+
+    expect(page).to_not have_content("Cow count:")
+
+    click_on("Sort By Number Of Cows")
+    expect(current_path).to eq("/ranches")
+
+    expect("Big Bobby's Bovine Bonanza").to appear_before("Fernando's Fine Bovines")
+    expect(page).to have_content("Cow count: 4")
+    
+    expect("Fernando's Fine Bovines").to appear_before("Janie's Jolly Cow Corral")
+    expect(page).to have_content("Cow count: 2")
+    expect(page).to have_content("Cow count: 1")
+  end
 end
