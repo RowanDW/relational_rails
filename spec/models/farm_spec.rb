@@ -12,7 +12,7 @@ RSpec.describe Farm do
       @crop2 = @farm2.crops.create!(name: 'Beans', yield: 65, annual: true)
       @crop3 = @farm1.crops.create!(name: 'Peaches', yield: 25, annual: false)
     end
-    
+
     describe '#crops_count' do
       it 'counts the number of crops a farm has' do
         expect(@farm1.crops_count).to eq(2)
@@ -32,6 +32,22 @@ RSpec.describe Farm do
 
       it 'can order farms in descending order' do
         expect(Farm.order_created_at_desc).to eq([@farm3, @farm2, @farm1])
+      end
+    end
+
+    describe '#order_crop_count' do
+      before :each do
+        @farm1 = Farm.create!(name: "Schrute Farms", acres: 40, organic: true)
+        @farm2 = Farm.create!(name: "Old MacDonald's", acres: 100, organic: false)
+        @farm3 = Farm.create!(name: "Farmy Farm", acres: 100, organic: false)
+        @crop1 = @farm1.crops.create!(name: 'Tomatoes', yield: 30, annual: true)
+        @crop2 = @farm2.crops.create!(name: 'Beans', yield: 65, annual: true)
+        @crop3 = @farm2.crops.create!(name: 'Apples', yield: 22, annual: false)
+      end
+
+      it 'orders farms by crop count desc' do
+        expect(Farm.order_crop_count).to eq([@farm2, @farm1, @farm3])
+
       end
     end
   end
