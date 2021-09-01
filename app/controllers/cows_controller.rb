@@ -3,7 +3,7 @@ class CowsController < ApplicationController
     if params[:exact_name].nil?
       @cows = Cow.all_grass_fed
     else
-      @cows = Cow.where(name: params[:exact_name])
+      @cows = Cow.exact_name(params[:exact_name])
     end
   end
 

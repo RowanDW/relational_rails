@@ -26,7 +26,7 @@ RSpec.describe Ranch do
   end
 
   describe 'class methods' do
-    describe '#order_created_at_desc' do
+    describe '.order_created_at_desc' do
       it 'can order ranches in descending order' do
         expect(Ranch.order_created_at_desc).to eq([@ranch_4, @ranch_3, @ranch_2, @ranch_1])
       end
@@ -35,6 +35,13 @@ RSpec.describe Ranch do
     describe '.sort_by_num' do
       it 'can sort ranches by number of cows per ranch' do
         expect(Ranch.sort_by_num).to eq([@ranch_3, @ranch_1, @ranch_2, @ranch_4])
+      end
+    end
+
+    describe '.exact_name(name)' do
+      it 'returns ranch when name is an exact match' do
+        expect(Ranch.exact_name("Fernando's Fine Bovines")).to eq([@ranch_1])
+        expect(Ranch.exact_name("Fernando")).to eq([])
       end
     end
   end

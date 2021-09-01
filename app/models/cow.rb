@@ -18,4 +18,8 @@ class Cow < ApplicationRecord
   def self.older_than(age_threshold)
     Cow.where("age > #{age_threshold}")
   end
+
+  def self.exact_name(name)
+    Cow.where(name: name)
+  end
 end
