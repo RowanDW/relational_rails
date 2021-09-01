@@ -104,4 +104,18 @@ RSpec.describe '#the cows index page' do
     click_button("Submit Exact Name")
     expect(page).to_not have_content("Bessie Lou")
   end
+
+  it 'has a form for a partial name match' do
+    visit "/cows"
+
+    fill_in("partial_name", with: "Bessie")
+    click_button("Submit Partial Name")
+    expect(current_path).to eq("/cows")
+    expect(page).to have_content("Bessie Lou")
+    expect(page).to_not have_content("Bobbie Jean")
+
+    fill_in("partial_name", with: "bessie")
+    click_button("Submit Partial Name")
+    expect(page).to have_content("Bessie Lou")
+  end
 end

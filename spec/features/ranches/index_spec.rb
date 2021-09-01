@@ -126,4 +126,18 @@ RSpec.describe 'Ranches index' do
     click_button("Submit Exact Name")
     expect(page).to_not have_content("Fernando's Fine Bovines")
   end
+
+  it 'has a form for a partial name match' do
+    visit "/ranches"
+
+    fill_in("partial_name", with: "Fernando's")
+    click_button("Submit Partial Name")
+    expect(current_path).to eq("/ranches")
+    expect(page).to have_content("Fernando's Fine Bovines")
+    expect(page).to_not have_content("Janie's Jolly Cow Corral")
+
+    fill_in("partial_name", with: "fernando's")
+    click_button("Submit Partial Name")
+    expect(page).to have_content("Fernando's Fine Bovines")
+  end
 end

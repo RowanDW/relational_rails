@@ -44,5 +44,12 @@ RSpec.describe Ranch do
         expect(Ranch.exact_name("Fernando")).to eq([])
       end
     end
+
+    describe '.partial_name_search(name)' do
+      it 'returns ranch when name is a partial match' do
+        expect(Ranch.partial_name_search("Fine Bovines")).to eq([@ranch_1])
+        expect(Ranch.partial_name_search("fernando")).to eq([@ranch_1])
+      end
+    end
   end
 end

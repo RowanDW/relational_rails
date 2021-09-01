@@ -1,7 +1,9 @@
 class CowsController < ApplicationController
   def index
-    if params[:exact_name].nil?
+    if params[:exact_name].nil? && params[:partial_name].nil?
       @cows = Cow.all_grass_fed
+    elsif params[:exact_name].nil?
+      @cows = Cow.partial_name_search(params[:partial_name])
     else
       @cows = Cow.exact_name(params[:exact_name])
     end

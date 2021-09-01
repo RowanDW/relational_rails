@@ -18,4 +18,8 @@ class Ranch < ApplicationRecord
   def self.exact_name(name)
     Ranch.where(name: name)
   end
+
+  def self.partial_name_search(name)
+    Ranch.where("LOWER(name) LIKE ?", "%#{name.downcase}%")
+  end
 end

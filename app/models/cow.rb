@@ -16,4 +16,8 @@ class Cow < ApplicationRecord
   def self.exact_name(name)
     Cow.where(name: name)
   end
+
+  def self.partial_name_search(name)
+    Cow.where("LOWER(name) LIKE ?", "%#{name.downcase}%")
+  end
 end

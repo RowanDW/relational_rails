@@ -17,3 +17,10 @@
 
   <%= form.submit 'Submit Exact Name' %>
 <% end %>
+
+<%= form_with url: "/cows", method: :get, local: true do |form| %>
+  <%= form.label :partial_name %>
+  <%= form.text_field :partial_name %>
+
+  <%= form.submit 'Submit Partial Name' %>
+<% end %>
