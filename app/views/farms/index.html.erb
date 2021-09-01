@@ -3,8 +3,14 @@
 
 <%= form_with url: "/farms", method: :get, local: true do |form| %>
     <%= form.label :exact_search %>
-    <%= form.number_field :exact_search %>
+    <%= form.text_field :exact_search %>
     <%= form.submit  "Exact name search"  %>
+<% end %>
+
+<%= form_with url: "/farms", method: :get, local: true do |form| %>
+    <%= form.label :partial_search %>
+    <%= form.text_field :partial_search %>
+    <%= form.submit  "Partial name search"  %>
 <% end %>
 
 <% @farms.each do |farm| %>
