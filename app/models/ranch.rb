@@ -14,4 +14,8 @@ class Ranch < ApplicationRecord
     group(:id).
     order("cows.count DESC")
   end
+
+  def self.exact_name(name)
+    Ranch.where(name: name)
+  end
 end

@@ -6,7 +6,7 @@ class RanchesController < ApplicationController
     elsif params[:exact_name].nil?
       @ranches = Ranch.order_created_at_desc
     else
-      @ranches = Ranch.where(name: params[:exact_name])
+      @ranches = Ranch.exact_name(params[:exact_name])
     end
   end
 

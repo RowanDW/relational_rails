@@ -35,5 +35,12 @@ RSpec.describe Cow do
         expect(Cow.older_than(2)).to eq([@cow_2, @cow_3])
       end
     end
+
+    describe '.exact_name(name)' do
+      it 'returns cow when name is an exact match' do
+        expect(Cow.exact_name("Bessie Lou")).to eq([@cow_1])
+        expect(Cow.exact_name("Bessie")).to eq([])
+      end
+    end
   end
 end
