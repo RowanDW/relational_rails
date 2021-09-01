@@ -12,7 +12,7 @@
 
 ## General info
 
-project description
+This is an introductory project to learn the usage of Ruby on Rails and make a website that utilizes a database schema featuring one-to-many relationships. Please see the schema below.
 
 ## Schema Visual Representation:
 ![tables](https://user-images.githubusercontent.com/826189/130882963-df22e372-5e47-43d2-83e3-e0141d92482b.png)
