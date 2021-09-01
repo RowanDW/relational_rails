@@ -12,4 +12,12 @@ class Crop < ApplicationRecord
   def self.yield_threshold(num)
     Crop.where("yield > #{num}")
   end
+
+  def self.exact_name_search(search)
+    where("name = '#{search}'")
+  end
+
+  def self.partial_name_search(search)
+    where("LOWER(name) LIKE ?", "%#{search.downcase}%")
+  end
 end

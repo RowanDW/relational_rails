@@ -3,8 +3,12 @@ class FarmsController < ApplicationController
   def index
     if params[:crop_sort] == 'true'
       @farms = Farm.order_crop_count
-    else
+    elsif params[:exact_search].nil? && params[:partial_search].nil?
       @farms = Farm.order_created_at_desc
+    elsif params[:partial_search].nil?
+      @farms = Farm.exact_name_search(params[:exact_search])
+    else
+      @farms = Farm.partial_name_search(params[:partial_search])
     end
   end
 

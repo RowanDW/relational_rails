@@ -1,7 +1,13 @@
 class CropsController < ApplicationController
 
   def index
-    @crops = Crop.only_annuals
+    if params[:exact_search].nil? && params[:partial_search].nil?
+      @crops = Crop.only_annuals
+    elsif params[:partial_search].nil?
+      @crops = Crop.exact_name_search(params[:exact_search])
+    else
+      @crops = Crop.partial_name_search(params[:partial_search])
+    end
   end
 
   def show

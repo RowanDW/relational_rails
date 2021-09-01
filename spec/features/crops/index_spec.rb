@@ -108,4 +108,58 @@ RSpec.describe 'the crops index page' do
 
     expect(current_path).to eq("/crops/#{@crop1.id}")
   end
+
+  it "can search by name (exact match)" do
+
+    visit '/crops'
+
+    expect(page).to have_button("Exact name search")
+
+    fill_in 'exact_search', with: "Apples"
+    click_button "Exact name search"
+
+    expect(current_path).to eq('/crops')
+
+    expect(page).to have_content("Apples")
+    expect(page).to_not have_content("Beans")
+    expect(page).to_not have_content("Tomatoes")
+
+    fill_in 'exact_search', with: "Potato"
+    click_button "Exact name search"
+
+    expect(page).to_not have_content("Apples")
+    expect(page).to_not have_content("Beans")
+    expect(page).to_not have_content("Tomatoes")
+  end
+
+  it "can search by name (partial match)" do
+    crop4 = @farm.crops.create!(name: 'Apples', yield: 22, annual: false)
+
+    visit '/crops'
+
+    expect(page).to have_button("Partial name search")
+
+    fill_in 'partial_search', with: "Apple"
+    click_button "Partial name search"
+  
+    expect(current_path).to eq('/crops')
+
+    expect(page).to have_content("Apples", count: 2)
+    expect(page).to_not have_content("Beans")
+    expect(page).to_not have_content("Tomatoes")
+
+    fill_in 'partial_search', with: "cat"
+    click_button "Partial name search"
+
+    expect(page).to_not have_content("Apples")
+    expect(page).to_not have_content("Beans")
+    expect(page).to_not have_content("Tomatoes")
+
+    fill_in 'partial_search', with: "s"
+    click_button "Partial name search"
+
+    expect(page).to have_content("Apples")
+    expect(page).to have_content("Beans")
+    expect(page).to have_content("Tomatoes")
+  end
 end
