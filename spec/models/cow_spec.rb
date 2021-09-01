@@ -36,10 +36,17 @@ RSpec.describe Cow do
       end
     end
 
-    describe '.exact_name(name)' do
+    describe '.exact_name_search(name)' do
       it 'returns cow when name is an exact match' do
-        expect(Cow.exact_name("Bessie Lou")).to eq([@cow_1])
-        expect(Cow.exact_name("Bessie")).to eq([])
+        expect(Cow.exact_name_search("Bessie Lou")).to eq([@cow_1])
+        expect(Cow.exact_name_search("Bessie")).to eq([])
+      end
+    end
+
+    describe '.partial_name_search(name)' do
+      it 'returns cow when name is an exact match' do
+        expect(Cow.partial_name_search("Lou")).to eq([@cow_1])
+        expect(Cow.partial_name_search("bessie")).to eq([@cow_1])
       end
     end
   end

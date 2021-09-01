@@ -15,7 +15,11 @@ class Ranch < ApplicationRecord
     order("cows.count DESC")
   end
 
-  def self.exact_name(name)
+  def self.exact_name_search(name)
     Ranch.where(name: name)
+  end
+
+  def self.partial_name_search(name)
+    Ranch.where("LOWER(name) LIKE ?", "%#{name.downcase}%")
   end
 end

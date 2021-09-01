@@ -14,5 +14,12 @@
   <%= form.submit 'Submit Exact Name' %>
 <% end %>
 
+<%= form_with url: "/ranches", method: :get, local: true do |form| %>
+  <%= form.label :partial_name %>
+  <%= form.text_field :partial_name %>
+
+  <%= form.submit 'Submit Partial Name' %>
+<% end %>
+
 <%= link_to "New Ranch", "ranches/new" %>
 <%= link_to "Sort By Number Of Cows", "/ranches?sort_by_num=true" %>

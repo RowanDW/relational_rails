@@ -13,7 +13,11 @@ class Cow < ApplicationRecord
     Cow.where("age > #{age_threshold}")
   end
 
-  def self.exact_name(name)
+  def self.exact_name_search(name)
     Cow.where(name: name)
+  end
+
+  def self.partial_name_search(name)
+    Cow.where("LOWER(name) LIKE ?", "%#{name.downcase}%")
   end
 end
