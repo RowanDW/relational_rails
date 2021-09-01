@@ -5,7 +5,7 @@ class CowsController < ApplicationController
     elsif params[:exact_name].nil?
       @cows = Cow.partial_name_search(params[:partial_name])
     else
-      @cows = Cow.exact_name(params[:exact_name])
+      @cows = Cow.exact_name_search(params[:exact_name])
     end
   end
 

@@ -8,7 +8,7 @@ class RanchesController < ApplicationController
     elsif params[:exact_name].nil?
       @ranches = Ranch.partial_name_search(params[:partial_name])
     else
-      @ranches = Ranch.exact_name(params[:exact_name])
+      @ranches = Ranch.exact_name_search(params[:exact_name])
     end
   end
 

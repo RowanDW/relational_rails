@@ -38,10 +38,10 @@ RSpec.describe Ranch do
       end
     end
 
-    describe '.exact_name(name)' do
+    describe '.exact_name_search(name)' do
       it 'returns ranch when name is an exact match' do
-        expect(Ranch.exact_name("Fernando's Fine Bovines")).to eq([@ranch_1])
-        expect(Ranch.exact_name("Fernando")).to eq([])
+        expect(Ranch.exact_name_search("Fernando's Fine Bovines")).to eq([@ranch_1])
+        expect(Ranch.exact_name_search("Fernando")).to eq([])
       end
     end
 

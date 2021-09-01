@@ -15,7 +15,7 @@ class Ranch < ApplicationRecord
     order("cows.count DESC")
   end
 
-  def self.exact_name(name)
+  def self.exact_name_search(name)
     Ranch.where(name: name)
   end
 
