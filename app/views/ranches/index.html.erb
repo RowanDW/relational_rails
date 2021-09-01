@@ -7,5 +7,12 @@
   <%= button_to "Delete #{ranch.name}", "/ranches/#{ranch.id}", method: :delete %>
 <% end %>
 
+<%= form_with url: "/ranches", method: :get, local: true do |form| %>
+  <%= form.label :exact_name %>
+  <%= form.text_field :exact_name %>
+
+  <%= form.submit 'Submit Exact Name' %>
+<% end %>
+
 <%= link_to "New Ranch", "ranches/new" %>
 <%= link_to "Sort By Number Of Cows", "/ranches?sort_by_num=true" %>
