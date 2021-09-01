@@ -51,13 +51,6 @@ List of features ready and TODOs for future development
 To-do list:
 * Add styling to make website visually more appealing and user friendly
 
-## Self-evaluation
-* Functionality - above expectations. All User Stories 100% complete including edge cases, and all extension stories completed.
-* Rails - meets expectations.
-* Database Design - meets expectations.
-* ActiveRecord - meets expectations.
-* Testing and Debugging - meets expectations.
-
 ## Status
 Project is: _in progress_
 
