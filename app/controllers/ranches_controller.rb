@@ -3,8 +3,10 @@ class RanchesController < ApplicationController
     @ranches = Ranch.order_created_at_desc
     if params[:sort_by_num] == "true"
       @ranches = Ranch.sort_by_num
-    else
+    elsif params[:exact_name].nil?
       @ranches = Ranch.order_created_at_desc
+    else
+      @ranches = Ranch.where(name: params[:exact_name])
     end
   end
 

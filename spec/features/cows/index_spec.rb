@@ -90,4 +90,18 @@ RSpec.describe '#the cows index page' do
     click_button("Delete Bobbie Jean")
     expect(page).to_not have_content("Bobbie Jean")
   end
+
+  it 'has a search by name form' do
+    visit "/cows"
+
+    fill_in("exact_name", with: "Bessie Lou")
+    click_button("Submit Exact Name")
+    expect(current_path).to eq("/cows")
+    expect(page).to have_content("Bessie Lou")
+    expect(page).to_not have_content("Bobbie Jean")
+
+    fill_in("exact_name", with: "Bessie")
+    click_button("Submit Exact Name")
+    expect(page).to_not have_content("Bessie Lou")
+  end
 end

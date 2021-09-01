@@ -112,4 +112,18 @@ RSpec.describe 'Ranches index' do
     expect(page).to have_content("Cow count: 2")
     expect(page).to have_content("Cow count: 1")
   end
+
+  it 'has a search by name form' do
+    visit "/ranches"
+
+    fill_in("exact_name", with: "Fernando's Fine Bovines")
+    click_button("Submit Exact Name")
+    expect(current_path).to eq("/ranches")
+    expect(page).to have_content("Fernando's Fine Bovines")
+    expect(page).to_not have_content("Janie's Jolly Cow Corral")
+
+    fill_in("exact_name", with: "Fernando's")
+    click_button("Submit Exact Name")
+    expect(page).to_not have_content("Fernando's Fine Bovines")
+  end
 end

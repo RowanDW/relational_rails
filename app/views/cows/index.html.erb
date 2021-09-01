@@ -10,3 +10,10 @@
   <%= button_to "Edit #{cow.name}", "/cows/#{cow.id}/edit", method: :get %>
   <%= button_to "Delete #{cow.name}", "/cows/#{cow.id}", method: :delete %>
 <% end %>
+
+<%= form_with url: "/cows", method: :get, local: true do |form| %>
+  <%= form.label :exact_name %>
+  <%= form.text_field :exact_name %>
+
+  <%= form.submit 'Submit Exact Name' %>
+<% end %>

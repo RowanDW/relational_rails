@@ -1,6 +1,10 @@
 class CowsController < ApplicationController
   def index
-    @cows = Cow.all_grass_fed
+    if params[:exact_name].nil?
+      @cows = Cow.all_grass_fed
+    else
+      @cows = Cow.where(name: params[:exact_name])
+    end
   end
 
   def show
