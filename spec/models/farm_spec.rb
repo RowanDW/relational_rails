@@ -67,7 +67,7 @@ RSpec.describe Farm do
         expect(Farm.partial_name_search("Farm")).to eq([@farm1, @farm3, @farm4])
         expect(Farm.partial_name_search("Sch")).to eq([@farm1])
         expect(Farm.partial_name_search("cat")).to eq([])
-        expect(Farm.partial_name_search("a")).to eq([@farm1, @farm2, @farm3, @farm4])
+        expect(Farm.partial_name_search("A")).to eq([@farm1, @farm2, @farm3, @farm4])
       end
     end
   end

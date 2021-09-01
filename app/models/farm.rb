@@ -10,7 +10,7 @@ class Farm < ApplicationRecord
   end
 
   def self.order_crop_count
-    left_joins(:crops).group(:id).order(Arel.sql('COUNT(crops) DESC'))
+    left_joins(:crops).group(:id).order('crops.count DESC')
   end
 
   def self.exact_name_search(search)
@@ -18,6 +18,6 @@ class Farm < ApplicationRecord
   end
 
   def self.partial_name_search(search)
-    where("name LIKE ?", "%#{search}%")
+    where("LOWER(name) LIKE ?", "%#{search.downcase}%")
   end
 end
